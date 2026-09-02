@@ -1,0 +1,72 @@
+
+==================================================
+DateTime : 2026-08-20 11:35:09
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : User : admin logged in successfully
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:35:16
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : admin viewed their profile
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:35:31
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : admin viewed Requests PDF of department: All Departments
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:35:33
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : admin viewed Requests PDF of department: All Departments
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:36:02
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : User admin submitted request ID 4
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:36:15
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : User admin updated the existing request
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:36:29
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : User admin deleted the existing request
+==================================================
+
+
+
+==================================================
+DateTime : 2026-08-20 11:37:18
+Username : admin
+IP       : 0:0:0:0:0:0:0:1
+Action   : admin viewed pdf for customers with search term: 
+==================================================
+
+
