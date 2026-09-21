@@ -47,7 +47,7 @@ a.cfdebuglink {color:blue; background-color:white }
 		</tr>
 		<tr>
 			<td class="cfdebug" nowrap> Template </td>
-			<td class="cfdebug">/CRM/views/views/loginform.cfm</td>
+			<td class="cfdebug">/CRMdui/views/views/loginform.cfm</td>
 		</tr>
 		<tr>
 			<td class="cfdebug" nowrap> Time Stamp </td>
@@ -169,7 +169,7 @@ REMOTE_ADDR=127.0.0.1
 REMOTE_HOST=127.0.0.1
 REMOTE_USER=
 REQUEST_METHOD=GET
-SCRIPT_NAME=/CRM/views/views/loginform.cfm
+SCRIPT_NAME=/CRMdui/views/views/loginform.cfm
 SERVER_NAME=localhost
 SERVER_PORT=8500
 SERVER_PORT_SECURE=0

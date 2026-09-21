@@ -1,289 +1,924 @@
-/* Page background */
+/* =========================================================
+   AURORA CRM - VIEW REQUESTS
+   Matches loginformstyle.css master theme
+========================================================= */
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 6px;
     padding: 40px;
-    background: linear-gradient(135deg, #eef2f3, #ffffff);
-      padding-bottom: 70px;
+
+    padding-bottom: 80px;
+
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(14, 165, 233, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168, 85, 247, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #312e81
+        );
+
+    background-attachment: fixed;
+
+    overflow-x: hidden;
+
+    position: relative;
 }
 
-/* Heading */
-h2 {
-    text-align: center;
-    color: #2C3E50;
-    margin-bottom: 25px;
-}
-h2:hover{
-    color:#000000;
-    letter-spacing: 0.5px;
-}
 /* =========================
-   TOP BAR (LEFT SIDE)
+   BACKGROUND GLOW
 ========================= */
-.top-bar {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: flex-start;   /* LEFT ALIGN */
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: -120px;
+    left: -100px;
+
+    width: 330px;
+    height: 330px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.24);
+
+    filter: blur(85px);
+
+    animation: floatingGlow 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: 0;
 }
-/* DROPDOWN */
-.department-dropdown {
-    padding: 10px 14px;
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    right: -120px;
+    bottom: -120px;
+
+    width: 360px;
+    height: 360px;
+
+    border-radius: 50%;
+
+    background: rgba(168, 85, 247, 0.22);
+
+    filter: blur(90px);
+
+    animation: floatingGlowReverse 10s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+h2 {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin: 10px 0 30px;
+
     color: #ffffff;
-    font-weight: bold;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 0 18px rgba(129, 140, 248, 0.25);
+
+    animation: titleAppear 0.7s ease forwards;
+}
+
+h2::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+
+    height: 4px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 15px rgba(124, 58, 237, 0.45);
+}
+
+h2:hover {
+    color: #ffffff;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar {
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    padding: 15px 18px;
+
+    box-sizing: border-box;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.11),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   DEPARTMENT DROPDOWN
+========================================================= */
+
+.department-dropdown {
     width: 260px;
-    border-radius: 8px;
-    border: 1px solid #e4adad;
+
+    padding: 11px 14px;
+
+    box-sizing: border-box;
+
+    border-radius: 11px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
     outline: none;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.75),
+            rgba(124, 58, 237, 0.75)
+        );
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
     font-size: 14px;
-   background: linear-gradient(90deg, #1003c0, #bf95c7);
+
+    font-weight: 700;
+
     cursor: pointer;
-    transition: 0.3s ease;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 .department-dropdown:hover {
-    
-    background: linear-gradient(90deg, #bf95c7, #12489e);
-    box-shadow: 0 0 5px rgba(18, 72, 158, 0.822);
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.35);
 }
 
 .department-dropdown:focus {
-    border-color: #859ece;
-    color: black;
-    box-shadow: 0 0 5px rgba(0, 85, 241, 0.822);
+    border-color: #a5b4fc;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.18),
+        0 0 18px rgba(99, 102, 241, 0.25);
 }
 
-/* REMOVE EMPTY OPTION HEIGHT */
+.department-dropdown option {
+    background: #172554;
+
+    color: #ffffff;
+}
+
 .department-dropdown option[value=""] {
     display: none;
 }
 
-/* FILTER BUTTON */
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
 .search-btn {
-    padding: 10px 16px;
-    background: linear-gradient(90deg, #053a9c, #0b57d0);
-    color: white;
+    padding: 11px 18px;
+
     border: none;
-    border-radius: 7px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    color: #ffffff;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s ease;
+
+    box-shadow:
+        0 6px 16px rgba(99, 102, 241, 0.28);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 .search-btn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(90deg, #4f7fd8, #053a9c);
-    box-shadow: 0px 4px 10px rgba(89, 5, 185, 0.945);
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 10px 24px rgba(99, 102, 241, 0.4);
 }
 
-
-/* PDF BUTTON */
-.pdf-btn {
-    margin-left: auto;  /* pushes PDF to right side */
+.search-btn:active {
+    transform: translateY(-1px);
 }
 
+/* =========================================================
+   PDF BUTTON
+========================================================= */
+
 .pdf-btn {
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    color: #ffffff;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
+    margin-left: auto;
+
     display: inline-block;
+
+    padding: 11px 19px;
+
+    border-radius: 11px;
+
     text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 18px rgba(99, 102, 241, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 .pdf-btn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(90deg, #dd2476, #ff512f);
-    box-shadow: 0px 4px 10px rgba(221, 36, 118, 0.5);
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed,
+            #9333ea
+        );
+
+    box-shadow:
+        0 10px 25px rgba(168, 85, 247, 0.4);
 }
 
-/* TABLE STYLING*/
+/* =========================================================
+   TABLE
+========================================================= */
+
 table {
+    position: relative;
+
+    z-index: 2;
+
     width: 90%;
-    margin: auto;
-    border-collapse: collapse;
 
-    /* PREMIUM MODERN GRADIENT */
-    background: linear-gradient(
-    135deg,
-    #f6f9ff 0%,
-    #edf3ff 40%,
-    #e8f4ff 75%,
-    #f2fffb 100%
-);
-    box-shadow:
-        0px 8px 20px rgba(0,0,0,0.08),
-        0px 2px 6px rgba(79,127,216,0.08);
+    margin: 0 auto;
 
-    border-radius: 14px;
+    border-collapse: separate;
+
+    border-spacing: 0;
+
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 18px;
 
-    backdrop-filter: blur(6px);
-}
-td {
-    padding: 9px;
-    text-align: center;
-    border-bottom: 1px solid #ffffff;
-}
-/* ROWS */
-tr {
-    background: rgba(255,255,255,0.72);
-    transition: 0.25s ease;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* ROW HOVER */
-tr:hover {
+/* =========================================================
+   TABLE HEADER
+========================================================= */
 
-    background: linear-gradient(
-        90deg,
-        rgba(102,161,144,0.12),
-        rgba(79,127,216,0.10)
-    );
-
-    transform: scale(1.002);
-}
-/* HEADER */
 th {
+    padding: 15px 12px;
 
-    background: linear-gradient(
-        90deg,
-        #2C3E50,
-        #3d5d75,
-        #a18266
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #312e81,
+            #4338ca,
+            #6d28d9
+        );
 
-    color: white;
+    color: #ffffff;
 
-    padding: 14px;
+    font-size: 13px;
+
+    font-weight: 800;
 
     text-transform: uppercase;
 
+    letter-spacing: 0.7px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   TABLE ROWS
+========================================================= */
+
+tr {
+    background: rgba(15, 23, 42, 0.48);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+tr:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(99, 102, 241, 0.18),
+            rgba(168, 85, 247, 0.14)
+        );
+
+    transform: scale(1.002);
+}
+
+/* =========================================================
+   TABLE CELLS
+========================================================= */
+
+td {
+    padding: 11px 9px;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.82);
+
     font-size: 14px;
 
-    letter-spacing: 0.5px;
-}
-/* ACTION BUTTONS CONTAINER */
-.action-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* UPDATE */
+/* Last row */
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   UPDATE BUTTON
+========================================================= */
+
 a.update-btn {
-    background: linear-gradient(90deg,  #053a9c, #4f7fd8);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    margin-right: 5px;
     display: inline-block;
+
+    padding: 7px 13px;
+
+    margin-right: 3px;
+
+    border-radius: 8px;
+
     text-decoration: none;
-    transition: 0.3s;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #3b82f6
+        );
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 a.update-btn:hover {
-    background: linear-gradient(90deg, #4f7fd8, #053a9c);
-    box-shadow: 0px 4px 10px rgb(11, 7, 252);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #2563eb
+        );
+
+    box-shadow:
+        0 7px 18px rgba(59, 130, 246, 0.4);
 }
 
-/* DELETE */
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
 a.delete-btn {
-    background: linear-gradient(90deg, #ec7272, #ff0000);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 13px;
     display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 8px;
+
     text-decoration: none;
-    transition: 0.3s;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f43f5e,
+            #e11d48
+        );
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 a.delete-btn:hover {
-    background: linear-gradient(90deg, #ff0000,#ec7272);  
-    box-shadow: 0px 4px 10px rgba(253, 2, 2, 0.801); 
-    transform: scale(1.05);
-}
+    transform: translateY(-2px);
 
-
-/* ========================= */
-/* PAGINATION */
-/* ========================= */
-
-.pagination{
-    margin-top:35px;
-    text-align:center;
-}
-
-/* ALL BUTTONS BLUE */
-
-.pagination button{
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    min-width:42px;
-    height:42px;
-
-    margin:5px;
-
-    border:none;
-
-    border-radius:14px;
-
-    cursor:pointer;
-
-    font-size:14px;
-
-    color:#ffffff;
-
-    background:linear-gradient(135deg, #3b82f6, #2563eb);
-
-    transition:0.25s ease;
+    background:
+        linear-gradient(
+            135deg,
+            #e11d48,
+            #be123c
+        );
 
     box-shadow:
-        0 4px 12px rgba(0,0,0,0.2);
+        0 7px 18px rgba(244, 63, 94, 0.4);
 }
 
-/* HOVER */
+/* =========================================================
+   PAGINATION
+========================================================= */
 
-.pagination button:hover{
+.pagination {
+    position: relative;
 
-    transform:translateY(-3px);
+    z-index: 2;
+
+    margin-top: 35px;
+
+    text-align: center;
+}
+
+/* Pagination buttons */
+
+.pagination button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 42px;
+
+    height: 42px;
+
+    margin: 5px;
+
+    padding: 0 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.85),
+            rgba(124, 58, 237, 0.85)
+        );
 
     box-shadow:
-        0 10px 20px rgba(59,130,246,0.35);
+        0 5px 15px rgba(0, 0, 0, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
+/* Pagination hover */
 
-/* ACTIVE PAGE GREEN */
+.pagination button:hover {
+    transform: translateY(-3px);
 
-.pagination button.active{
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #a855f7
+        );
 
-    background:linear-gradient(135deg, #22c55e, #16a34a);
-
-    color:white;
+    box-shadow:
+        0 10px 22px rgba(99, 102, 241, 0.35);
 }
 
+/* Active page */
 
-/* DISABLED */
+.pagination button.active {
+    background:
+        linear-gradient(
+            135deg,
+            #a855f7,
+            #7c3aed
+        );
 
-.pagination button:disabled{
+    color: #ffffff;
 
-    opacity:0.5;
+    box-shadow:
+        0 8px 20px rgba(168, 85, 247, 0.35);
+}
 
-    cursor:not-allowed;
+/* Disabled */
+
+.pagination button:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+button:focus-visible,
+select:focus-visible,
+a:focus-visible {
+    outline: 2px solid #818cf8;
+
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes floatingGlow {
+    from {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate(80px, 50px);
+        opacity: 1;
+    }
+}
+
+@keyframes floatingGlowReverse {
+    from {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate(-70px, -50px);
+        opacity: 1;
+    }
+}
+
+@keyframes titleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   TABLE RESPONSIVE WRAPPER SUPPORT
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    body {
+        padding: 30px 15px 80px;
+    }
+
+    .top-bar {
+        width: 95%;
+    }
+
+    table {
+        width: 95%;
+
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+    }
+
+    .pdf-btn {
+        margin-left: 0;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 25px 12px 80px;
+    }
+
+    h2 {
+        font-size: 25px;
+
+        margin-bottom: 25px;
+    }
+
+    .top-bar {
+        width: 100%;
+
+        padding: 14px;
+
+        justify-content: center;
+
+        border-radius: 16px;
+    }
+
+    .department-dropdown {
+        width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .pdf-btn {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+
+        border-radius: 14px;
+    }
+
+    .pagination {
+        margin-top: 25px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .top-bar {
+        gap: 10px;
+    }
+
+    .department-dropdown,
+    .search-btn,
+    .pdf-btn {
+        font-size: 13px;
+    }
+
+    th {
+        font-size: 12px;
+    }
+
+    td {
+        font-size: 13px;
+    }
+
+    .pagination button {
+        min-width: 38px;
+
+        height: 38px;
+
+        margin: 3px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    body::before,
+    body::after,
+    h2 {
+        animation: none;
+    }
+
+    .department-dropdown,
+    .search-btn,
+    .pdf-btn,
+    tr,
+    .pagination button,
+    a.update-btn,
+    a.delete-btn {
+        transition: none;
+    }
 }

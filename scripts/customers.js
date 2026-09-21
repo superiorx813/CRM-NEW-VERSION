@@ -1,4 +1,4 @@
-const api = "/CRM/controller.cfc?method=customersApi";
+const api = "/CRMdui/controller.cfc?method=customersApi";
 let currentPage = 1;
 let pageSize = 5;
 

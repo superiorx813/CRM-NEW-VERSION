@@ -6,7 +6,7 @@
     OR NOT structKeyExists(form,"password") 
     OR NOT structKeyExists(form,"confirmpassword")>
 
-   <script src="/CRM/scripts/alert.js"></script>
+   <script src="/CRMdui/scripts/alert.js"></script>
 
 <script>
     formNotSubmitted();
@@ -16,7 +16,7 @@
 
     <cfif form.password NEQ form.confirmpassword>
 
-        <script src="/CRM/scripts/alert.js"></script>
+        <script src="/CRMdui/scripts/alert.js"></script>
 
     <script>
     passwordMismatch();

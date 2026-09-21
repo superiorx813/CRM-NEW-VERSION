@@ -22,7 +22,7 @@
     action_type = "viewed_profile",
     description = "#session.username# viewed their profile"
 }>
-   <cfinclude template="/CRM/Views/logfile.cfm">
+   <cfinclude template="/CRMdui/views/logfile.cfm">
     <cfreturn data>
 </cffunction>
 
@@ -684,6 +684,6 @@
         value="0">
     
     <!-- REDIRECT -->
-<cflocation url="/CRM/Views/loginform.cfm" addtoken="false">
+<cflocation url="/CRMdui/views/loginform.cfm" addtoken="false">
     </cffunction>
 </cfcomponent>

@@ -1,139 +1,394 @@
+/* =========================================================
+   AURORA CRM - VIEW LOGS
+   Matches loginformstyle.css master theme
+========================================================= */
+
+
 /* =========================
    RESET
 ========================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 
 /* =========================
    BODY
 ========================= */
 
-body{
-    font-family:"Segoe UI",sans-serif;
+body {
+    min-height: 100vh;
 
-    min-height:100vh;
+    padding: 40px 20px 90px;
 
-    padding:40px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
 
-    background:#c1c8d1;
+    color: #ffffff;
 
-    color:#333;
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(14, 165, 233, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168, 85, 247, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #312e81
+        );
+
+    background-attachment: fixed;
+
+    overflow-x: hidden;
+
+    position: relative;
 }
+
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 330px;
+    height: 330px;
+
+    left: -100px;
+    top: 15%;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.25);
+
+    filter: blur(85px);
+
+    pointer-events: none;
+
+    animation: floatingGlow 8s ease-in-out infinite;
+}
+
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 360px;
+    height: 360px;
+
+    right: -120px;
+    bottom: 5%;
+
+    border-radius: 50%;
+
+    background: rgba(168, 85, 247, 0.25);
+
+    filter: blur(90px);
+
+    pointer-events: none;
+
+    animation: floatingGlowReverse 10s ease-in-out infinite;
+}
+
 
 /* =========================
    CONTAINER
 ========================= */
 
-.container{
-    width:92%;
-    max-width:1400px;
+.container {
+    position: relative;
+    z-index: 1;
 
-    margin:30px auto;
+    width: 92%;
+    max-width: 1400px;
 
-    padding:30px;
+    margin: 30px auto;
 
-    background:rgb(240, 235, 235);
+    padding: 30px;
 
-    border-radius:20px;
+    border-radius: 24px;
 
-    border-top:5px solid #66a190;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.16),
+            rgba(255, 255, 255, 0.07)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 
     box-shadow:
-        0 10px 25px rgba(44,62,80,0.15);
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
 
-    overflow:hidden;
+    overflow: hidden;
+
+    animation: containerAppear 0.7s ease forwards;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
+
+
+/* =========================
+   CONTAINER HOVER
+========================= */
+
+.container:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.42),
+        0 0 30px rgba(99, 102, 241, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================
+   TOP GLOW LINE
+========================= */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7,
+            #0ea5e9
+        );
+
+    background-size: 250% 100%;
+
+    animation: gradientMove 5s ease infinite;
+}
+
 
 /* =========================
    TITLE
 ========================= */
 
-h2{
-    text-align:center;
+h2 {
+    position: relative;
 
-    font-size:32px;
-    font-weight:700;
+    text-align: center;
 
-    margin-bottom:30px;
+    margin-bottom: 30px;
 
-    color:#2C3E50;
+    color: #ffffff;
+
+    font-size: 32px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    animation: titleAppear 0.8s ease forwards;
 }
+
+
+h2::after {
+    content: "";
+
+    display: block;
+
+    width: 75px;
+    height: 4px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 15px rgba(124, 58, 237, 0.7);
+
+    animation: lineExpand 0.8s ease forwards;
+}
+
 
 /* =========================
    TABLE WRAPPER
 ========================= */
 
-.table-wrapper{
-    overflow-x:auto;
-    border-radius:15px;
+.table-wrapper {
+    position: relative;
+
+    overflow-x: auto;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: rgba(15, 23, 42, 0.35);
+
+    scrollbar-width: thin;
+    scrollbar-color: #6366f1 rgba(15, 23, 42, 0.5);
 }
+
+
+/* =========================
+   TABLE SCROLLBAR
+========================= */
+
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed
+        );
+}
+
 
 /* =========================
    TABLE
 ========================= */
 
-table{
-    width:100%;
+table {
+    width: 100%;
 
-    border-collapse:collapse;
+    min-width: 900px;
 
-    background:white;
+    border-collapse: collapse;
+
+    background: rgba(15, 23, 42, 0.35);
 }
+
 
 /* =========================
    TABLE HEADER
 ========================= */
 
-table th{
-    padding:16px;
+table th {
+    padding: 16px 14px;
 
-    background:linear-gradient(
-        90deg,
-        #2C3E50,
-        #66a190
-    );
+    color: #ffffff;
 
-    color:white;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(79, 70, 229, 0.95),
+            rgba(124, 58, 237, 0.95),
+            rgba(168, 85, 247, 0.90)
+        );
 
-    font-size:14px;
-    font-weight:600;
+    font-size: 13px;
+    font-weight: 700;
 
-    text-align:center;
+    text-align: center;
 
-    letter-spacing:0.5px;
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
+
 
 /* =========================
    TABLE CELLS
 ========================= */
 
-table td{
-    padding:14px;
+table td {
+    padding: 14px;
 
-    text-align:center;
+    color: rgba(255, 255, 255, 0.88);
 
-    color:#374151;
+    font-size: 14px;
 
-    font-size:14px;
+    text-align: center;
 
-    border-bottom:1px solid #e5e7eb;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(15, 23, 42, 0.28);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
 }
+
 
 /* =========================
-   ROW HOVER
+   TABLE ROWS
 ========================= */
 
-table tbody tr{
-    transition:0.3s ease;
+table tbody tr {
+    transition:
+        transform 0.25s ease,
+        background 0.3s ease;
 }
 
-table tbody tr:hover{
-    background:#e8f6f2;
+
+table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.025);
 }
+
+
+table tbody tr:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(99, 102, 241, 0.14),
+            rgba(168, 85, 247, 0.12)
+        );
+
+    transform: translateY(-1px);
+}
+
+
+table tbody tr:hover td {
+    color: #ffffff;
+}
+
 
 /* =========================
    ACTION BADGES
@@ -141,194 +396,488 @@ table tbody tr:hover{
 
 .create,
 .update,
-.delete{
+.delete {
+    display: inline-block;
 
-    display:inline-block;
+    padding: 6px 14px;
 
-    padding:6px 14px;
+    border-radius: 30px;
 
-    border-radius:30px;
+    font-size: 12px;
+    font-weight: 700;
 
-    font-size:12px;
-    font-weight:600;
+    letter-spacing: 0.3px;
+
+    border: 1px solid transparent;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* CREATE */
 
-.create{
-    background:#dcfce7;
-    color:#15803d;
+/* =========================
+   CREATE
+========================= */
+
+.create {
+    color: #bbf7d0;
+
+    background:
+        rgba(22, 163, 74, 0.20);
+
+    border-color:
+        rgba(74, 222, 128, 0.25);
 }
 
-/* UPDATE */
 
-.update{
-    background:#dbeafe;
-    color:#2563eb;
+/* =========================
+   UPDATE
+========================= */
+
+.update {
+    color: #bfdbfe;
+
+    background:
+        rgba(37, 99, 235, 0.20);
+
+    border-color:
+        rgba(96, 165, 250, 0.25);
 }
 
-/* DELETE */
 
-.delete{
-    background:#fee2e2;
-    color:#dc2626;
+/* =========================
+   DELETE
+========================= */
+
+.delete {
+    color: #fecaca;
+
+    background:
+        rgba(220, 38, 38, 0.20);
+
+    border-color:
+        rgba(248, 113, 113, 0.25);
 }
+
 
 /* =========================
    PAGINATION
 ========================= */
 
-.pagination{
-    margin-top:25px;
+.pagination {
+    margin-top: 28px;
 
-    text-align:center;
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
-/* BUTTONS */
 
-.pagination button{
+/* =========================
+   PAGINATION BUTTONS
+========================= */
 
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+.pagination button {
+    display: inline-flex;
 
-    min-width:42px;
-    height:42px;
+    align-items: center;
+    justify-content: center;
 
-    margin:4px;
+    min-width: 42px;
+    height: 42px;
 
-    border:none;
+    margin: 4px;
 
-    border-radius:10px;
+    padding: 0 13px;
 
-    cursor:pointer;
+    border: 1px solid rgba(255, 255, 255, 0.12);
 
-    font-size:14px;
-    font-weight:600;
+    border-radius: 11px;
 
-    color:white;
+    color: #ffffff;
 
-    background:linear-gradient(
-        135deg,
-        #2C3E50,
-        #66a190
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
 
-    transition:0.3s ease;
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
 
     box-shadow:
-        0 4px 10px rgba(44,62,80,0.25);
+        0 6px 16px rgba(99, 102, 241, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
-/* HOVER */
 
-.pagination button:hover{
+/* =========================
+   PAGINATION HOVER
+========================= */
 
-    background:linear-gradient(
-        135deg,
-        #1f2d3a,
-        #4f8b79
-    );
+.pagination button:hover {
+    transform: translateY(-2px);
 
-    transform:translateY(-2px);
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 9px 22px rgba(124, 58, 237, 0.40);
 }
 
-/* ACTIVE */
 
-.pagination button.active{
+/* =========================
+   ACTIVE PAGE
+========================= */
 
-    background:linear-gradient(
-        135deg,
-        #16a34a,
-        #22c55e
-    );
+.pagination button.active {
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #a855f7
+        );
 
-    color:white;
+    box-shadow:
+        0 0 18px rgba(168, 85, 247, 0.45);
+
+    transform: translateY(-1px);
 }
 
-/* DISABLED */
 
-.pagination button:disabled{
+/* =========================
+   DISABLED
+========================= */
 
-    background:#d1d5db;
+.pagination button:disabled {
+    color: rgba(255, 255, 255, 0.38);
 
-    color:#6b7280;
+    background:
+        rgba(255, 255, 255, 0.08);
 
-    cursor:not-allowed;
+    border-color:
+        rgba(255, 255, 255, 0.08);
 
-    transform:none;
+    cursor: not-allowed;
 
-    box-shadow:none;
+    box-shadow: none;
+
+    transform: none;
 }
+
 
 /* =========================
    HOME BUTTON
 ========================= */
 
-.home-btn{
-    margin-top:30px;
+.home-btn {
+    margin-top: 30px;
 
-    text-align:center;
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
-.home-btn a{
 
-    display:inline-block;
+/* =========================
+   HOME BUTTON LINK
+========================= */
 
-    padding:12px 28px;
+.home-btn a {
+    display: inline-block;
 
-    text-decoration:none;
+    position: relative;
 
-    border-radius:12px;
+    overflow: hidden;
 
-    background:linear-gradient(
-        90deg,
-        #2C3E50,
-        #66a190
-    );
+    padding: 12px 28px;
 
-    color:white;
+    text-decoration: none;
 
-    font-size:15px;
-    font-weight:600;
+    border-radius: 12px;
 
-    transition:0.3s ease;
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    font-size: 15px;
+    font-weight: 700;
 
     box-shadow:
-        0 5px 15px rgba(44,62,80,0.25);
+        0 8px 20px rgba(99, 102, 241, 0.30);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.home-btn a:hover{
 
-    background:linear-gradient(
-        90deg,
-        #1f2d3a,
-        #4f8b79
-    );
+/* =========================
+   HOME BUTTON SHINE
+========================= */
 
-    transform:translateY(-2px);
+.home-btn a::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
 }
+
+
+.home-btn a:hover::before {
+    left: 130%;
+}
+
+
+/* =========================
+   HOME BUTTON HOVER
+========================= */
+
+.home-btn a:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(124, 58, 237, 0.45);
+}
+
+
+/* =========================
+   FOCUS
+========================= */
+
+.pagination button:focus-visible,
+.home-btn a:focus-visible {
+    outline: 2px solid #a5b4fc;
+
+    outline-offset: 4px;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes floatingGlow {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(40px, -30px) scale(1.1);
+    }
+}
+
+
+@keyframes floatingGlowReverse {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-35px, 30px) scale(1.12);
+    }
+}
+
+
+@keyframes containerAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 75px;
+        opacity: 1;
+    }
+}
+
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
 
-    body{
-        padding:15px;
+    body {
+        padding: 20px 10px 80px;
     }
 
-    .container{
-        width:100%;
-        padding:15px;
+    .container {
+        width: 100%;
+
+        margin: 15px auto;
+
+        padding: 20px;
+
+        border-radius: 20px;
     }
 
-    h2{
-        font-size:26px;
+    h2 {
+        font-size: 26px;
+
+        margin-bottom: 25px;
     }
 
-    table{
-        min-width:900px;
+    .table-wrapper {
+        border-radius: 12px;
+    }
+
+    table {
+        min-width: 900px;
+    }
+
+    table th {
+        padding: 13px 10px;
+
+        font-size: 12px;
+    }
+
+    table td {
+        padding: 12px 10px;
+
+        font-size: 13px;
+    }
+
+    .pagination button {
+        min-width: 38px;
+        height: 38px;
+
+        margin: 3px;
+    }
+
+    .home-btn a {
+        padding: 11px 24px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 480px) {
+
+    body {
+        padding: 12px 8px 75px;
+    }
+
+    .container {
+        padding: 16px;
+
+        border-radius: 18px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .pagination button {
+        min-width: 36px;
+        height: 36px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

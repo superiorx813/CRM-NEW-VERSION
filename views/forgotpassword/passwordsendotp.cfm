@@ -18,7 +18,7 @@
     <h1>#otp#</h1>
 
 </cfmail>
-<script src="/CRM/scripts/alert.js"></script>
+<script src="/CRMdui/scripts/alert.js"></script>
 
 <script>
     otpSentSuccess();

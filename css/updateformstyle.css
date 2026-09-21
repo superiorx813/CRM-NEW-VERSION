@@ -1,163 +1,572 @@
-/* Page Background */
+/* =========================================================
+   AURORA CRM - UPDATE FORM
+   Matches loginformstyle.css master theme
+========================================================= */
+
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+
 body {
-    margin: 0;
-    padding: 0;
+    margin: 25px;
+    padding: 40px 20px 80px;
 
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
 
-    background: linear-gradient(135deg, #dfe9f3, #ffffff);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
 
-    height: 100vh;
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(14, 165, 233, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168, 85, 247, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #312e81
+        );
+
+    background-attachment: fixed;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
     flex-direction: column;
+
+    overflow-x: hidden;
+    position: relative;
 }
 
 
-/* Form Container */
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 320px;
+    height: 320px;
+
+    left: -100px;
+    top: 15%;
+
+    background: rgba(99, 102, 241, 0.25);
+
+    filter: blur(80px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation: floatingGlow 8s ease-in-out infinite;
+}
+
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    right: -120px;
+    bottom: 5%;
+
+    background: rgba(168, 85, 247, 0.25);
+
+    filter: blur(90px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation: floatingGlowReverse 10s ease-in-out infinite;
+}
+
+
+/* =========================
+   CRM WATERMARK
+========================= */
+
+body {
+    isolation: isolate;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+body::marker {
+    display: none;
+}
+
+
+/* =========================
+   FORM CONTAINER
+========================= */
+
 .form {
-    width: 500px;
+    width: min(500px, calc(100% - 40px));
 
-    padding: 35px;
+    padding: 42px;
 
-    border-radius: 20px;
+    box-sizing: border-box;
 
-    background: rgba(255, 255, 255, 0.95);
+    border-radius: 28px;
 
-    backdrop-filter: blur(10px);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.16),
+            rgba(255, 255, 255, 0.07)
+        );
 
-    box-shadow: 0px 0px 13px rgb(1, 61, 150);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 
-    transition: 0.3s ease;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+    animation: formAppear 0.8s ease forwards;
 }
 
 
-/* Form Hover Effect */
+/* =========================
+   FORM HOVER
+========================= */
+
 .form:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 0px 20px rgba(1, 61, 150);
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(99, 102, 241, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 
-/* Heading */
+/* =========================
+   HEADING
+========================= */
+
 h2 {
+    position: relative;
+
     text-align: center;
 
-    color: #2C3E50;
+    color: #ffffff;
 
-    margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 32px;
 
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    animation: titleAppear 0.8s ease forwards;
 }
 
 
-/* Labels */
-label {
-    font-weight: bold;
-
-    color: #34495E;
+h2::after {
+    content: "";
 
     display: block;
 
-    margin-bottom: 8px;
+    width: 70px;
+    height: 4px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 12px rgba(124, 58, 237, 0.7);
+
+    animation: lineExpand 0.8s ease forwards;
 }
 
 
-/* Input Fields */
+/* =========================
+   LABELS
+========================= */
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-size: 15px;
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================
+   INPUT FIELDS
+========================= */
+
 input[type="text"],
 select {
-
     width: 100%;
 
-    padding: 14px;
+    padding: 14px 15px;
 
     margin-bottom: 20px;
 
-    border: 1px solid #dcdcdc;
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
     border-radius: 12px;
 
-    font-size: 16px;
-
     outline: none;
 
-    transition: 0.3s ease;
+    background:
+        rgba(15, 23, 42, 0.65);
 
-    box-sizing: border-box;
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
 }
 
 
-/* Input Focus */
-input[type="text"]:focus {
-    border-color: #66a190;
+/* Placeholder */
 
-    box-shadow: 0px 0px 8px rgba(102, 161, 144, 0.5);
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.50);
 }
 
 
-/* Submit Button */
+/* Select Options */
+
+select option {
+    background: #172554;
+    color: #ffffff;
+}
+
+
+/* =========================
+   INPUT FOCUS
+========================= */
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #818cf8;
+
+    background:
+        rgba(15, 23, 42, 0.85);
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.15),
+        0 0 18px rgba(99, 102, 241, 0.35);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
 input[type="submit"] {
-
     width: 100%;
 
     padding: 14px;
-
-    background: linear-gradient(90deg, #2C3E50, #66a190);
-
-    color: white;
 
     border: none;
 
     border-radius: 12px;
 
-    font-size: 18px;
+    color: #ffffff;
 
-    font-weight: bold;
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7,
+            #6366f1
+        );
+
+    background-size: 300% 100%;
+
+    font-family: inherit;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
 
     cursor: pointer;
 
-    transition: 0.3s ease;
+    box-shadow:
+        0 8px 22px rgba(99, 102, 241, 0.30);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation: buttonGradient 5s ease infinite;
 }
 
 
-/* Submit Hover */
+/* =========================
+   SUBMIT HOVER
+========================= */
+
 input[type="submit"]:hover {
+    transform: translateY(-2px) scale(1.01);
 
-    transform: scale(1.02);
-        background: linear-gradient(90deg, #66a190, #2C3E50 );
-
-
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    box-shadow:
+        0 12px 28px rgba(124, 58, 237, 0.45),
+        0 0 20px rgba(99, 102, 241, 0.25);
 }
 
 
-/* Back Link */
+/* =========================
+   SUBMIT ACTIVE
+========================= */
+
+input[type="submit"]:active {
+    transform: translateY(0) scale(0.99);
+}
+
+
+/* =========================
+   BACK LINK
+========================= */
+
 a {
+    display: inline-block;
 
     margin-top: 20px;
 
+    color: rgba(255, 255, 255, 0.90);
+
     text-decoration: none;
 
-    color: #2C3E50;
+    font-size: 16px;
+    font-weight: 700;
 
-    font-size: 17px;
-
-    font-weight: bold;
-
-    transition: 0.3s ease;
+    transition:
+        color 0.3s ease,
+        letter-spacing 0.3s ease,
+        transform 0.3s ease;
 }
 
 
-/* Link Hover */
-a:hover {
+/* =========================
+   LINK HOVER
+========================= */
 
-    color: #66a190;
+a:hover {
+    color: #a5b4fc;
 
     letter-spacing: 0.5px;
-}
-       
 
-        
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   LINK FOCUS
+========================= */
+
+a:focus-visible {
+    outline: 2px solid #818cf8;
+
+    outline-offset: 4px;
+
+    border-radius: 5px;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes floatingGlow {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(40px, -30px) scale(1.1);
+    }
+}
+
+
+@keyframes floatingGlowReverse {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-35px, 30px) scale(1.12);
+    }
+}
+
+
+@keyframes formAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 70px;
+        opacity: 1;
+    }
+}
+
+
+@keyframes buttonGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 15px 70px;
+    }
+
+    .form {
+        width: 100%;
+
+        padding: 30px 22px;
+
+        border-radius: 22px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    input[type="text"],
+    select {
+        font-size: 15px;
+        padding: 13px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+        padding: 13px;
+    }
+
+    a {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

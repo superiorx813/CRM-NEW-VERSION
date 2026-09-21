@@ -4,8 +4,8 @@
 <title>CRM Index</title>
 </head>
 <body>  
-<cfinclude template="/CRM/includes/header.cfm">
+<cfinclude template="/CRMdui/includes/header.cfm">
      <cfinclude  template="router.cfm">
 </body>
 </html>
-     <cfinclude template="/CRM/includes/footer.cfm">
+     <cfinclude template="/CRMdui/includes/footer.cfm">

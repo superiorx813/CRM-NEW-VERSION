@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Stats Page</title>
-    <link rel="stylesheet" href="/CRM/css/stats.css">
+    <link rel="stylesheet" href="/CRMdui/css/stats.css">
 </head>
 <body>
 
@@ -78,7 +78,7 @@
 
 <br>
 <div class="bottom-section">
-    <cfinclude template="/CRM/includes/homebutton.cfm">
+    <cfinclude template="/CRMdui/includes/homebutton.cfm">
 </div>
 
 </body>

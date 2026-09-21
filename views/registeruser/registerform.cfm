@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Register Page</title>
-    <link rel="stylesheet" href="/CRM/css/registerformstyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/registerformstyle.css">
 
 
 </head>

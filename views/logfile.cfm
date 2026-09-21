@@ -26,7 +26,7 @@
 
 <cfset logMessage = logData.description>
 
-<cfset logFolder = expandPath("/CRM/logs")>
+<cfset logFolder = expandPath("/CRMdui/logs")>
 
 <cfif NOT directoryExists(logFolder)>
     <cfdirectory action="create" directory="#logFolder#">

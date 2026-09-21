@@ -8,7 +8,7 @@
     <title>User Registration List</title>
 
     <!-- CSS FILE -->
-    <link rel="stylesheet" href="/CRM/css/usersregisterlist.css">
+    <link rel="stylesheet" href="/CRMdui/css/usersregisterlist.css">
 </head>
 
 <body>
@@ -83,9 +83,9 @@
     <div class="pagination" id="pagination"></div>
 
     <!-- HOME BUTTON -->
-    <cfinclude template="/CRM/includes/homebutton.cfm">
+    <cfinclude template="/CRMdui/includes/homebutton.cfm">
 
-    <script src="/CRM/scripts/pagination.js"></script>
+    <script src="/CRMdui/scripts/pagination.js"></script>
 
 </body>
 

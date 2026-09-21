@@ -1,27 +1,105 @@
-/* =========================
-   PAGE STYLING
-========================= */
+/* =========================================================
+   CRM ANALYTICS — MODERN LIVE DASHBOARD
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
 
-    font-family: "Segoe UI", Arial, sans-serif;
-
-    background: linear-gradient(
-        135deg,
-        #eef2f7,
-        #dbe7f5
-    );
-
     margin: 0;
 
-    padding: 30px;
-    padding-top: 70px;
-    padding-bottom: 45px;
+    min-height: 100vh;
 
-    color: #2c3e50;
+    padding: 80px 35px 60px;
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #e5e7eb;
+
+    position: relative;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(99,102,241,0.28),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(14,165,233,0.22),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168,85,247,0.25),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #070b1a,
+            #0f172a,
+            #171b45,
+            #24164d
+        );
+
+    background-attachment: fixed;
 }
 
-/* Dashboard Title */
+
+/* =========================================================
+   ANIMATED BACKGROUND LIGHTS
+========================================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 420px;
+    height: 420px;
+
+    left: -150px;
+    top: 20%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(99,102,241,0.20),
+            transparent 70%
+        );
+
+    filter: blur(60px);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        analyticsGlow 8s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   DASHBOARD TITLE
+========================================================= */
 
 body::before {
 
@@ -31,354 +109,743 @@ body::before {
 
     text-align: center;
 
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 4vw, 3rem);
 
-    font-weight: 700;
-
-    color: #1f2937;
-
-    margin-bottom: 30px;
+    font-weight: 800;
 
     letter-spacing: 1px;
+
+    margin-bottom: 38px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #60a5fa,
+            #818cf8,
+            #c084fc,
+            #22d3ee
+        );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        titleGradient 5s linear infinite,
+        titleAppear 0.8s ease forwards;
+
+    position: relative;
 }
 
-/* =========================
-   CARD WIDGETS
-========================= */
+
+/* =========================================================
+   COMMON GLASS CARDS
+========================================================= */
 
 .app-status-widget,
 .session-status-widget,
 .all-sessions-widget,
 .active-users-widget {
 
-    background: rgba(255,255,255,0.85);
+    position: relative;
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    padding: 26px;
 
-    border-radius: 16px;
+    margin-bottom: 28px;
 
-    padding: 24px;
+    border-radius: 24px;
 
-    margin-bottom: 25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.13),
+            rgba(255,255,255,0.045)
+        );
 
-    border: 1px solid rgba(255,255,255,0.4);
+    border:
+        1px solid rgba(255,255,255,0.14);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,0.08),
-        0 2px 6px rgba(0,0,0,0.04);
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+
+    overflow: hidden;
+
+    animation:
+        cardReveal 0.8s ease forwards;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-
-    animation: fadeUp 0.6s ease forwards;
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
 }
 
 
-/* =========================
-   CARD HOVER EFFECT
-========================= */
+/* =========================================================
+   CARD LIGHT SHINE
+========================================================= */
+
+.app-status-widget::before,
+.session-status-widget::before,
+.all-sessions-widget::before,
+.active-users-widget::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.08),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.8s ease;
+
+    pointer-events: none;
+}
+
+
+.app-status-widget:hover::before,
+.session-status-widget:hover::before,
+.all-sessions-widget:hover::before,
+.active-users-widget:hover::before {
+
+    left: 140%;
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
 
 .app-status-widget:hover,
 .session-status-widget:hover,
 .all-sessions-widget:hover,
 .active-users-widget:hover {
 
-    transform: translateY(-5px);
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(129,140,248,0.35);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.12),
-        0 5px 12px rgba(0,0,0,0.08);
+        0 30px 70px rgba(0,0,0,0.45),
+        0 0 35px rgba(99,102,241,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.16);
 }
 
 
-/* =========================
+/* =========================================================
    HEADINGS
-========================= */
+========================================================= */
 
 .app-status-widget h3,
 .session-status-widget h3,
 .all-sessions-widget h3,
 .active-users-widget h3 {
 
-    margin-top: 0;
+    margin: 0 0 20px;
 
-    color: #1f2937;
+    padding-bottom: 14px;
 
-    font-size: 1.3rem;
+    color: #ffffff;
 
-    padding-bottom: 10px;
+    font-size: 1.25rem;
 
-    border-bottom: 2px solid #edf2f7;
+    font-weight: 700;
 
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.12);
+
+    position: relative;
 }
 
 
-/* =========================
-   APP STATUS CARD
-========================= */
+.app-status-widget h3::after,
+.session-status-widget h3::after,
+.all-sessions-widget h3::after,
+.active-users-widget h3::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 55px;
+    height: 2px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 10px rgba(129,140,248,0.8);
+}
+
+
+/* =========================================================
+   APPLICATION STATUS
+========================================================= */
 
 .app-status-widget {
 
-    border-left: 5px solid #6f42c1;
-}
-
-
-/* =========================
-   ACTIVE USERS CARD
-========================= */
-
-.active-users-widget {
+    border-left:
+        4px solid #8b5cf6;
 
     background:
         linear-gradient(
             135deg,
-            rgba(0,123,255,0.08),
-            rgba(0,180,216,0.08)
+            rgba(99,102,241,0.15),
+            rgba(168,85,247,0.05)
         );
-
-    border-left: 5px solid #007bff;
 }
+
+
+.app-status-widget:hover {
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,0.4),
+        0 0 30px rgba(139,92,246,0.20);
+}
+
+
+/* =========================================================
+   ACTIVE USERS
+========================================================= */
+
+.active-users-widget {
+
+    border-left:
+        4px solid #06b6d4;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(6,182,212,0.16),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(14,165,233,0.12),
+            rgba(99,102,241,0.06)
+        );
+}
+
 
 .active-users-widget p {
 
-    font-size: 2rem;
-
-    font-weight: 700;
-
-    color: #0056b3;
+    margin: 18px 0 5px;
 
     text-align: center;
+
+    font-size: clamp(2.5rem, 5vw, 4rem);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22d3ee,
+            #60a5fa,
+            #818cf8
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(
+            0 0 15px rgba(34,211,238,0.25)
+        );
+
+    animation:
+        numberPulse 3s ease-in-out infinite;
 }
 
 
-/* =========================
-   CURRENT USER CARD
-========================= */
+/* =========================================================
+   CURRENT USER
+========================================================= */
 
 .session-status-widget {
 
-    position: relative;
+    border-left:
+        4px solid #22c55e;
 
-    border-left: 5px solid #16a34a;
-
-    animation: userPulse 3s ease-in-out infinite;
+    animation:
+        cardReveal 0.8s ease forwards,
+        liveCardPulse 4s ease-in-out infinite;
 }
 
 
-/* =========================
-   ONLINE INDICATOR
-========================= */
+.session-status-widget::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    right: -50px;
+    top: -50px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(34,197,94,0.10);
+
+    filter: blur(20px);
+
+    animation:
+        greenGlow 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ONLINE DOT
+========================================================= */
 
 .online-dot {
 
     display: inline-block;
 
-    width: 10px;
-
-    height: 10px;
-
-    background: #16a34a;
-
-    border-radius: 50%;
+    width: 11px;
+    height: 11px;
 
     margin-left: 8px;
 
-    box-shadow: 0 0 8px rgba(22,163,74,0.5);
-
-    animation: onlineBlink 2s ease-in-out infinite;
-}
-
-
-/* =========================
-   TABLE SECTION
-========================= */
-
-.all-sessions-widget table {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    overflow: hidden;
-
-    border-radius: 10px;
-
-    margin-top: 15px;
-}
-
-.all-sessions-widget th {
+    border-radius: 50%;
 
     background:
-        linear-gradient(
-            135deg,
-            #2c3e50,
-            #34495e
-        );
+        #22c55e;
 
-    color: white;
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,0.10),
+        0 0 15px rgba(34,197,94,0.8);
 
-    padding: 14px;
+    animation:
+        onlinePulse 1.8s ease-in-out infinite;
 
-    text-align: left;
-
-    font-weight: 600;
-}
-
-.all-sessions-widget td {
-
-    padding: 12px;
-
-    border-bottom: 1px solid #ececec;
-}
-
-.all-sessions-widget tr:nth-child(even) {
-
-    background-color: #f8fafc;
-}
-
-.all-sessions-widget tbody tr {
-
-    transition:
-        background-color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.all-sessions-widget tbody tr:hover {
-
-    background-color: #edf7ff;
-
-    transform: scale(1.01);
+    vertical-align: middle;
 }
 
 
-/* =========================
+/* =========================================================
    TEXT
-========================= */
+========================================================= */
 
 p {
 
     margin: 10px 0;
 
-    line-height: 1.6;
+    line-height: 1.7;
+
+    color:
+        rgba(226,232,240,0.82);
 }
 
 
-/* =========================
-   BUTTON AREA
-========================= */
+/* =========================================================
+   SESSION TABLE CONTAINER
+========================================================= */
+
+.all-sessions-widget {
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.all-sessions-widget table {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background:
+        rgba(2,6,23,0.35);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.all-sessions-widget th {
+
+    padding: 16px 15px;
+
+    text-align: left;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    text-transform: uppercase;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79,70,229,0.90),
+            rgba(124,58,237,0.90)
+        );
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.12);
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE CELLS
+========================================================= */
+
+.all-sessions-widget td {
+
+    padding: 14px 15px;
+
+    color:
+        rgba(226,232,240,0.88);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+    background:
+        rgba(15,23,42,0.28);
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+
+/* =========================================================
+   ALTERNATE ROW
+========================================================= */
+
+.all-sessions-widget tr:nth-child(even) td {
+
+    background:
+        rgba(30,41,59,0.28);
+}
+
+
+/* =========================================================
+   TABLE ROW HOVER
+========================================================= */
+
+.all-sessions-widget tbody tr {
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.all-sessions-widget tbody tr:hover {
+
+    transform:
+        translateX(5px);
+}
+
+
+.all-sessions-widget tbody tr:hover td {
+
+    color: #ffffff;
+
+    background:
+        rgba(99,102,241,0.15);
+
+    border-bottom-color:
+        rgba(129,140,248,0.25);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+
+.all-sessions-widget tbody tr:hover td:first-child {
+
+    padding-left: 20px;
+}
+
+
+/* =========================================================
+   TABLE LAST ROW
+========================================================= */
+
+.all-sessions-widget tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   BOTTOM SECTION
+========================================================= */
 
 .bottom-section {
 
     text-align: center;
 
     margin-top: 35px;
+
+    padding: 10px;
 }
 
 
-/* =========================
-   PAGE LOAD ANIMATION
-========================= */
+/* =========================================================
+   GENERIC LINKS / BUTTONS
+========================================================= */
 
-@keyframes fadeUp {
+.bottom-section a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 24px;
+
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed,
+            #a855f7
+        );
+
+    background-size: 200% 200%;
+
+    box-shadow:
+        0 10px 25px rgba(79,70,229,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+
+.bottom-section a:hover {
+
+    transform: translateY(-3px);
+
+    background-position: 100% 50%;
+
+    box-shadow:
+        0 15px 35px rgba(124,58,237,0.4);
+}
+
+
+/* =========================================================
+   PAGE LOAD ANIMATION
+========================================================= */
+
+@keyframes cardReveal {
 
     from {
 
         opacity: 0;
 
-        transform: translateY(20px);
+        transform:
+            translateY(35px)
+            scale(0.97);
+
     }
 
     to {
 
         opacity: 1;
 
-        transform: translateY(0);
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
 
-/* =========================
-   CURRENT USER GLOW
-========================= */
+@keyframes titleAppear {
 
-@keyframes userPulse {
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   TITLE GRADIENT ANIMATION
+========================================================= */
+
+@keyframes titleGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+@keyframes analyticsGlow {
 
     0% {
 
-        box-shadow:
-            0 8px 20px rgba(0,0,0,0.08);
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+        opacity: 0.6;
     }
 
     50% {
 
-        box-shadow:
-            0 8px 25px rgba(22,163,74,0.18),
-            0 0 15px rgba(22,163,74,0.12);
+        transform:
+            translate3d(180px,80px,0)
+            scale(1.2);
+
+        opacity: 0.9;
     }
 
     100% {
 
-        box-shadow:
-            0 8px 20px rgba(0,0,0,0.08);
+        transform:
+            translate3d(350px,-40px,0)
+            scale(0.9);
+
+        opacity: 0.6;
     }
 }
 
 
-/* =========================
-   ONLINE BLINK
-========================= */
+/* =========================================================
+   ACTIVE NUMBER ANIMATION
+========================================================= */
 
-@keyframes onlineBlink {
+@keyframes numberPulse {
 
-    0% {
-
-        opacity: 1;
+    0%,
+    100% {
 
         transform: scale(1);
+
+        filter:
+            drop-shadow(
+                0 0 12px rgba(34,211,238,0.20)
+            );
     }
 
     50% {
 
-        opacity: 0.5;
+        transform: scale(1.05);
+
+        filter:
+            drop-shadow(
+                0 0 24px rgba(34,211,238,0.45)
+            );
+    }
+}
+
+
+/* =========================================================
+   ONLINE PULSE
+========================================================= */
+
+@keyframes onlinePulse {
+
+    0% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 0 0 rgba(34,197,94,0.55);
+    }
+
+    50% {
 
         transform: scale(1.15);
-    }
 
-    100% {
-
-        opacity: 1;
-
-        transform: scale(1);
-    }
-}
-
-
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
-
-@media (max-width: 768px) {
-
-    body {
-
-        padding: 15px;
-    }
-
-    .all-sessions-widget {
-
-        overflow-x: auto;
-    }
-
-    .all-sessions-widget table {
-
-        min-width: 700px;
-    }
-
-    body::before {
-
-        font-size: 1.5rem;
-    }
-}
+        box-shadow:
+            0 0 0 7px rgba(34,

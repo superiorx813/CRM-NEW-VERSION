@@ -1,5 +1,5 @@
 <cfparam name="form.otp" default="">
-<script src="/CRM/scripts/alert.js"></script>
+<script src="/CRMdui/scripts/alert.js"></script>
 
 <cfif form.otp EQ session.resetOTP>
 

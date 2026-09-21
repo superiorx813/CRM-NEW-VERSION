@@ -1,9 +1,9 @@
 
 <!-- PROFILE IMAGE PATH -->
 <cfif structKeyExists(data, "user") AND len(trim(data.user.profile_image))>
-    <cfset profilePic = "/CRM/" & data.user.profile_image>
+    <cfset profilePic = "/CRMdui/" & data.user.profile_image>
 <cfelse>
-    <cfset profilePic = "/CRM/images/uploads/default.png">
+    <cfset profilePic = "/CRMdui/images/uploads/default.png">
 </cfif>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
 <head>
     <title>Profile</title>
 
-    <link rel="stylesheet" href="/CRM/css/profilestyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/profilestyle.css">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -69,7 +69,7 @@
 
     <!-- HOME -->
     <div class="bottom-section">
-        <cfinclude template="/CRM/includes/homebutton.cfm">
+        <cfinclude template="/CRMdui/includes/homebutton.cfm">
     </div>
 
 </div>

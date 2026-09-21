@@ -7,8 +7,8 @@
 
     <title>Activity Logs</title>
 
-    <link rel="stylesheet" href="/CRM/css/viewlogs.css">
-    <link rel="stylesheet" href="/CRM/css/pagination.css">
+    <link rel="stylesheet" href="/CRMdui/css/viewlogs.css">
+    <link rel="stylesheet" href="/CRMdui/css/pagination.css">
 
 </head>
 
@@ -68,11 +68,11 @@
 
 <!-- HOME BUTTON -->
 <div class="home-button">
-    <cfinclude template="/CRM/includes/homebutton.cfm">
+    <cfinclude template="/CRMdui/includes/homebutton.cfm">
 </div>
 
 <!-- JS PAGINATION -->
-<script src="/CRM/scripts/pagination.js"></script>
+<script src="/CRMdui/scripts/pagination.js"></script>
 
 </body>
 </html>

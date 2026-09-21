@@ -17,17 +17,17 @@
     }>
 
     <!-- ================= INCLUDE LOGGER ================= -->
-    <cfinclude template="/CRM/views/logfile.cfm">
+    <cfinclude template="/CRMdui/views/logfile.cfm">
 
     <cfset structClear(session)>
 
     <cflocation
-        url="/CRM/views/loginform.cfm?status=registered"
+        url="/CRMdui/views/loginform.cfm?status=registered"
         addtoken="false">
 
 <cfelse>
 
-    <script src="/CRM/scripts/alert.js"></script>
+    <script src="/CRMdui/scripts/alert.js"></script>
 
     <script>
         invalidOtp();

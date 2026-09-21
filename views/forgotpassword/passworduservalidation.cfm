@@ -10,7 +10,7 @@
 
 <cfif getUser.recordCount EQ 0>
 
-     <script src="/CRM/scripts/alert.js"></script>
+     <script src="/CRMdui/scripts/alert.js"></script>
 
     <script>
         usernameNotFound();

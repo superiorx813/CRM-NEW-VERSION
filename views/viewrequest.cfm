@@ -7,10 +7,10 @@
 <html>
 <head>
     <title>View Requests</title>
-    <link rel="stylesheet" href="/CRM/css/viewrequeststyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/viewrequeststyle.css">
 </head>
 <body>
-    <script src="/CRM/scripts/viewrequest.js"></script>
+    <script src="/CRMdui/scripts/viewrequest.js"></script>
 <cfif structKeyExists(url, "status")>
     <cfif url.status EQ "deleted">
         <script>
@@ -56,7 +56,7 @@
         <a
             href="index.cfm?fuse=downloadreport&department=#URLEncodedFormat(form.searchDepartment)#"
             target="_blank">
-            View PDF
+           <span style="color: white;"> VIEW PDF</span>
         </a>
     </cfoutput>
 </div>
@@ -121,9 +121,9 @@
 
 <br>
 
-<cfinclude template="/CRM/includes/homebutton.cfm">
+<cfinclude template="/CRMdui/includes/homebutton.cfm">
 
-<script src="/CRM/scripts/pagination.js"></script>
+<script src="/CRMdui/scripts/pagination.js"></script>
 
 </body>
 </html>

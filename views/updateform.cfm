@@ -5,7 +5,7 @@
 
     <title>Update Request</title>
 
-    <link rel="stylesheet" href="/CRM/css/updateformstyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/updateformstyle.css">
 
 </head>
 

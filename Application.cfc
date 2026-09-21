@@ -56,7 +56,7 @@
     <!--- SESSION CHECK ONLY FOR NORMAL PAGES (NOT AJAX) --->
     <cfif NOT isAPI AND NOT listFindNoCase(publicPages, currentPage)
         AND (NOT structKeyExists(session, "user_id") OR session.user_id EQ 0)>
-        <cflocation url="/CRM/Views/loginform.cfm" addtoken="false">
+        <cflocation url="/CRMdui/views/loginform.cfm" addtoken="false">
         <cfreturn false>
     </cfif>
 
@@ -79,7 +79,7 @@
                 <div class="error-box">
                     <h1>Page Not Found</h1>
                     <p>The requested page does not exist.</p>
-                    <p><a href="/CRM/Views/loginform.cfm">Go to login</a></p>
+                    <p><a href="/CRMdui/views/loginform.cfm">Go to login</a></p>
                 </div>
             </body>
             </html>
@@ -109,7 +109,7 @@
     <html>
     <head>
         <title>Application Error</title>
-        <link rel="stylesheet" href="/CRM/css/onerror1.css">
+        <link rel="stylesheet" href="/CRMdui/css/onerror1.css">
     </head>
     <body>
         <div class="error-box">
@@ -150,7 +150,7 @@
                 </p>
             </cfif>
             <br>
-            <a href="/CRM/Views/loginform.cfm">
+            <a href="/CRMdui/views/loginform.cfm">
                 Go to Login
             </a>
         </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="/CRM/css/editstyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/editstyle.css">
 </head>
 
 <body>

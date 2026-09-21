@@ -1,6 +1,6 @@
 <cfparam name="form.newpassword" default="">
 <cfparam name="form.confirmpassword" default="">
-<script src="/CRM/scripts/alert.js"></script>
+<script src="/CRMdui/scripts/alert.js"></script>
 <cfif form.newpassword NEQ form.confirmpassword>
 
     <script>
@@ -44,7 +44,7 @@
 
     <script>
         passwordUpdatedSuccess();
-        window.location = "/CRM/Views/loginform.cfm";
+        window.location = "/CRMdui/views/loginform.cfm";
     </script>
 
 </cfif>

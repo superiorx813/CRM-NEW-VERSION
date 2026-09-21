@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <script src="/CRM/scripts/alert.js"></script>
+    <script src="/CRMdui/scripts/alert.js"></script>
 
 <cfif structKeyExists(url, "status")
       AND url.status EQ "registered">
@@ -21,7 +21,7 @@
     </script>
 
 </cfif>
-
+<div class="crm-background-text">CRM</div>
 <div class="form">
 
     <h2>Login</h2>

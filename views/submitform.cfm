@@ -4,7 +4,7 @@
 <head>
     <title>Submission Form</title>
    <!-- <link rel="stylesheet" href="../css/submitformstyle.css"> -->
-    <link rel="stylesheet" href="/CRM/css/submitformstyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/submitformstyle.css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 
     <br>
 
-<cfinclude template="/CRM/includes/homebutton.cfm">
+<cfinclude template="/CRMdui/includes/homebutton.cfm">
 </body>
 
 </html>

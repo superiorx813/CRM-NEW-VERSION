@@ -35,7 +35,7 @@
 <head>
 
     <link rel="stylesheet"
-          href="/CRM/css/downloadreport.css">
+          href="/CRMdui/css/downloadreport.css">
 
 </head>
 

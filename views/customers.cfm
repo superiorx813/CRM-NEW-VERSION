@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Customers</title>
-    <link rel="stylesheet" href="/CRM/css/customers.css">
-    <script src="/CRM/scripts/customers.js"></script>
+    <link rel="stylesheet" href="/CRMdui/css/customers.css">
+    <script src="/CRMdui/scripts/customers.js"></script>
 </head>
 <body>
 <br>
@@ -127,7 +127,7 @@
 </div>
  <!-- HOME -->
     <div class="bottom-section">
-        <cfinclude template="/CRM/includes/homebutton.cfm">
+        <cfinclude template="/CRMdui/includes/homebutton.cfm">
     </div>
 </body>
 </html>

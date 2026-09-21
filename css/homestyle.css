@@ -1,46 +1,473 @@
+/* =========================================================
+   AURORA CRM - HOME PAGE
+   Matches loginformstyle.css master theme
+========================================================= */
+
+/* =========================
+   BODY
+========================= */
+
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background-color: #f4f6f9;
     margin: 0;
-    color: #333;
+
+    min-height: 100vh;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(14, 165, 233, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168, 85, 247, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #312e81
+        );
+
+    background-attachment: fixed;
+
+    overflow-x: hidden;
+
+    position: relative;
 }
 
-/* Content Area */
-.content {
-    margin-top: 70px; /* navbar height */
+/* =========================
+   BACKGROUND GLOW - LEFT
+========================= */
 
-    min-height: calc(100vh - 70px);
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: 10%;
+    left: -100px;
+
+    width: 300px;
+    height: 300px;
+
+    background: rgba(99, 102, 241, 0.25);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    animation: floatingGlow 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+/* =========================
+   BACKGROUND GLOW - RIGHT
+========================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    right: -100px;
+    bottom: 5%;
+
+    width: 320px;
+    height: 320px;
+
+    background: rgba(168, 85, 247, 0.22);
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    animation: floatingGlowReverse 10s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+
+.content {
+    margin-top: 64px;
+
+    min-height: calc(100vh - 64px);
 
     display: flex;
+
     flex-direction: column;
 
-    justify-content: center; /* vertical center */
-    align-items: center;     /* horizontal center */
+    justify-content: center;
+
+    align-items: center;
 
     text-align: center;
+
+    padding: 40px 20px;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    z-index: 2;
 }
+
+/* =========================
+   MAIN CONTENT GLASS AREA
+========================= */
+
+.content > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================
+   H2
+========================= */
 
 h2 {
     margin: 0;
+
     padding: 10px;
-    color: #4503fa;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: #c7d2fe;
+
+    text-shadow:
+        0 0 12px rgba(129, 140, 248, 0.35);
+
+    animation: titleAppear 0.8s ease forwards;
 }
+
+/* =========================
+   H1
+========================= */
+
 h1 {
-    font-size: 40px;
-    font-weight: bold;
-    color: #000;
+    margin: 10px 0;
 
-    animation: glow 1s ease-in-out infinite alternate;
+    font-size: clamp(36px, 6vw, 58px);
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #c7d2fe,
+            #a5b4fc,
+            #e9d5ff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 20px rgba(99, 102, 241, 0.18);
+
+    animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes glow {
+/* =========================
+   OPTIONAL TEXT
+========================= */
+
+.content p {
+    max-width: 650px;
+
+    margin: 12px auto 0;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    animation: titleAppear 1s ease forwards;
+}
+
+/* =========================
+   OPTIONAL GLASS CONTAINER
+========================= */
+
+.home-card {
+    width: min(700px, calc(100% - 40px));
+
+    padding: 45px 40px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.05)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    position: relative;
+
+    overflow: hidden;
+
+    animation: formAppear 0.8s ease forwards;
+}
+
+/* Glass highlight */
+
+.home-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -100px;
+    right: -100px;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.18);
+
+    filter: blur(50px);
+
+    pointer-events: none;
+}
+
+/* =========================
+   TITLE UNDERLINE
+========================= */
+
+h1::after {
+    content: "";
+
+    display: block;
+
+    width: 80px;
+    height: 4px;
+
+    margin: 18px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 15px rgba(124, 58, 237, 0.5);
+
+    animation: lineExpand 1s ease forwards;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes floatingGlow {
+
     from {
-        text-shadow: 0 0 5px #ba00c0;
+        transform: translate(0, 0);
+        opacity: 0.5;
     }
+
     to {
-        text-shadow:
-            0 0 10px #3b0099,
-            0 0 20px #fc0202,
-            0 0 30px #1eb300;
+        transform: translate(80px, 50px);
+        opacity: 1;
+    }
+}
+
+@keyframes floatingGlowReverse {
+
+    from {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate(-70px, -50px);
+        opacity: 1;
+    }
+}
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+
+    from {
+        filter:
+            drop-shadow(
+                0 0 4px rgba(99, 102, 241, 0.15)
+            );
+    }
+
+    to {
+        filter:
+            drop-shadow(
+                0 0 14px rgba(129, 140, 248, 0.35)
+            );
+    }
+}
+
+@keyframes formAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 80px;
+        opacity: 1;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    .content {
+        margin-top: 120px;
+
+        min-height: calc(100vh - 120px);
+
+        padding: 35px 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 38px;
+
+        letter-spacing: -0.5px;
+    }
+
+    .content p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+    .home-card {
+        width: calc(100% - 20px);
+
+        padding: 35px 22px;
+
+        border-radius: 22px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 480px) {
+
+    .content {
+        padding: 25px 12px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .content p {
+        font-size: 13px;
+    }
+
+    .home-card {
+        padding: 28px 18px;
+
+        border-radius: 20px;
+    }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    body::before,
+    body::after,
+    h1,
+    h2,
+    .content p,
+    .home-card,
+    h1::after {
+        animation: none;
     }
 }

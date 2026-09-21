@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Home Page</title>
-    <link rel="stylesheet" href="/CRM/css/homestyle.css">
+    <link rel="stylesheet" href="/CRMdui/css/homestyle.css">
 </head>
 <body>
 

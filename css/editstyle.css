@@ -1,71 +1,722 @@
-body {
-    background: #f2f4f7;
-    font-family: Arial, sans-serif;
-}
+/* =========================================================
+   EDIT PROFILE STYLE
+   MASTER THEME: loginformstyle.css
+   ========================================================= */
 
-/* FORM CARD */
-.card {
-    width: 420px;
-    background: white;
-    margin: 60px auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* TITLE */
-.card h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-}
-
-/* LABELS */
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-    color: #444;
-}
-
-/* INPUT FIELDS */
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    margin-bottom: 18px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
+* {
     box-sizing: border-box;
 }
 
-/* TEXTAREA */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(14, 165, 233, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168, 85, 247, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #312e81
+        );
+
+    background-attachment: fixed;
+
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND GLOW
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 430px;
+    height: 430px;
+
+    top: -120px;
+    left: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.30);
+
+    filter: blur(85px);
+
+    animation: floatingGlow 9s ease-in-out infinite;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    right: -140px;
+    bottom: -140px;
+
+    border-radius: 50%;
+
+    background: rgba(168, 85, 247, 0.28);
+
+    filter: blur(90px);
+
+    animation: floatingGlowReverse 11s ease-in-out infinite;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   CRM WATERMARK
+   ========================================================= */
+
+body > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/*
+   Large watermark behind the edit form.
+*/
+
+body::marker {
+    display: none;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.card {
+    position: relative;
+
+    width: min(520px, calc(100% - 40px));
+
+    margin: 70px auto;
+
+    padding: 40px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.17),
+            rgba(255, 255, 255, 0.055)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(22px);
+
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    overflow: hidden;
+
+    animation: formAppear 0.7s ease forwards;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(99, 102, 241, 0.22);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+}
+
+
+.card::after {
+    content: "CRM";
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-12deg);
+
+    font-size: clamp(180px, 30vw, 400px);
+
+    font-weight: 900;
+
+    letter-spacing: 25px;
+
+    color:
+        rgba(255, 255, 255, 0.025);
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: -1;
+
+    white-space: nowrap;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(129, 140, 248, 0.35);
+
+    box-shadow:
+        0 35px 80px rgba(0, 0, 0, 0.42),
+        0 0 35px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.card h2 {
+    position: relative;
+
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    animation: titleAppear 0.8s ease forwards;
+}
+
+
+.card h2::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 15px rgba(124, 58, 237, 0.55);
+
+    animation: lineExpand 0.8s ease forwards;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+label {
+    display: block;
+
+    margin-top: 17px;
+
+    margin-bottom: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   INPUT FIELDS
+   ========================================================= */
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-top: 5px;
+
+    margin-bottom: 18px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    outline: none;
+
+    background:
+        rgba(15, 23, 42, 0.58);
+
+    color: #ffffff;
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 15px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+    color:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+input:hover,
+textarea:hover {
+    border-color:
+        rgba(129, 140, 248, 0.40);
+}
+
+
+input:focus,
+textarea:focus {
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    border-color:
+        #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.16),
+        0 0 20px rgba(99, 102, 241, 0.16);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
 textarea {
     resize: none;
-    height: 100px;
+
+    height: 110px;
+
+    line-height: 1.5;
 }
 
-/* BUTTON */
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
 button {
     width: 100%;
-    padding: 12px;
-    background: #0072ff;
-    color: white;
+
+    padding: 13px 18px;
+
+    margin-top: 5px;
+
     border: none;
-    border-radius: 8px;
-    font-size: 17px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    background-size: 200% 200%;
+
+    color: #ffffff;
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
     cursor: pointer;
-    transition: 0.3s;
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-position 0.5s ease;
 }
+
 
 button:hover {
-    background: #005ed9;
+    background-position: 100% 50%;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(124, 58, 237, 0.40),
+        0 0 20px rgba(168, 85, 247, 0.15);
 }
 
-/* FILE INPUT SPACING FIX */
+
+button:active {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
 input[type="file"] {
-    padding: 8px;
-    background: #f9f9f9;
+    padding: 10px;
+
+    background:
+        rgba(15, 23, 42, 0.55);
+
+    color:
+        rgba(255, 255, 255, 0.80);
+
+    cursor: pointer;
+}
+
+
+input[type="file"]::file-selector-button {
+    margin-right: 12px;
+
+    padding: 8px 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+input[type="file"]::file-selector-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+
+::-webkit-scrollbar-track {
+    background:
+        rgba(15, 23, 42, 0.55);
+}
+
+
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #6366f1,
+            #7c3aed
+        );
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #818cf8,
+            #a855f7
+        );
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #818cf8;
+
+    outline-offset: 3px;
+
+    box-shadow:
+        0 0 0 5px rgba(99, 102, 241, 0.15);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes floatingGlow {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(40px, 30px)
+            scale(1.08);
+    }
+}
+
+
+@keyframes floatingGlowReverse {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-35px, -25px)
+            scale(1.08);
+    }
+}
+
+
+@keyframes formAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 70px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+
+    .card {
+        width: calc(100% - 20px);
+
+        margin: 35px auto;
+
+        padding: 25px 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .card h2 {
+        font-size: 25px;
+    }
+
+
+    .card::after {
+        font-size: 150px;
+
+        letter-spacing: 10px;
+    }
+
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+
+    button {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+    }
 }

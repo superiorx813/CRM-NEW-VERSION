@@ -1,84 +1,923 @@
 
-        body{
-            background-color: #f2f2f2;
-            font-family: Arial, sans-serif;
-        }
+/* =========================================================
+   MODERN CRM / GLASSMORPHISM UI
+   ========================================================= */
 
-        .form{
-            width: 500px;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 50px;
-            background-color: white;
-            box-shadow: 0px 0px 10px rgb(23, 20, 241);
-        }
+* {
+    box-sizing: border-box;
+}
 
-        h2{
-            text-align: center;
-            color: rgb(49, 0, 128);
-            margin-bottom: 40px;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
 
-        label{
-            font-size: 28px;
-            font-weight: bold;
-        }
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-        input[type="text"],
-        input[type="password"]{
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(14, 165, 233, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(168, 85, 247, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #312e81
+        );
 
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0 25px 0;
-            border: 1px dotted rgb(76, 175, 76);
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 18px;
-        }
+    overflow-x: hidden;
+    position: relative;
+}
 
-        input[type="submit"]{
 
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background-color:hsl(204, 88%, 32%);
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+/* =========================================================
+   ANIMATED BACKGROUND GLOW
+   ========================================================= */
 
-        input[type="submit"]:hover{
-            background-color: #3639c4;
-            transform: scale(1.02);
-        }
+body::before,
+body::after {
+    content: "";
+    position: fixed;
 
-        .registerBtn{
-            background-color: green;
-        }
+    width: 350px;
+    height: 350px;
 
-        .registerBtn:hover{
-            background-color: darkgreen;
-        }
+    border-radius: 50%;
 
-        .text{
-            text-align: center;
-            font-size: 20px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
+    filter: blur(80px);
 
-        .forgot{
-            text-align: center;
-            margin-top: 20px;
-        }
+    opacity: 0.45;
 
-        .forgot a{
-            text-decoration: none;
-            color: rgb(49, 0, 128);
-            font-size: 18px;
-        }
+    pointer-events: none;
 
-    
+    z-index: 0;
+}
+
+body::before {
+    background: #6366f1;
+
+    top: -120px;
+    left: -100px;
+
+    animation:
+        floatingGlow 8s ease-in-out infinite;
+}
+
+body::after {
+    background: #06b6d4;
+
+    right: -120px;
+    bottom: -120px;
+
+    animation:
+        floatingGlowReverse 10s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATED CRM BACKGROUND TEXT
+   ========================================================= */
+
+body::marker {
+    display: none;
+}
+
+
+/* Add this element in your HTML if desired:
+   <div class="crm-background-text">CRM</div>
+*/
+
+.crm-background-text {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-12deg);
+
+    font-size: clamp(
+        180px,
+        25vw,
+        420px
+    );
+
+    font-weight: 900;
+
+    letter-spacing: 20px;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.035
+    );
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: 0;
+
+    animation:
+        crmFloat 7s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MAIN GLASS FORM
+   ========================================================= */
+
+.form {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        500px,
+        calc(100% - 40px)
+    );
+
+    margin: 70px auto;
+
+    padding: 42px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.07)
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.22
+        );
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.35),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.20);
+
+    overflow: hidden;
+
+    animation:
+        formAppear 0.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Glass shine */
+
+.form::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                255,
+                255,
+                255,
+                0.20
+            ),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Bottom gradient glow */
+
+.form::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 120px;
+
+    left: 50%;
+    bottom: -100px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(
+            99,
+            102,
+            241,
+            0.45
+        );
+
+    filter:
+        blur(50px);
+
+    pointer-events: none;
+}
+
+
+/* Form hover */
+
+.form:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 35px 90px
+        rgba(0, 0, 0, 0.42),
+
+        0 0 35px
+        rgba(
+            99,
+            102,
+            241,
+            0.18
+        ),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+h2 {
+    position: relative;
+
+    text-align: center;
+
+    margin:
+        0 0 38px;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 4px 20px
+        rgba(0, 0, 0, 0.25);
+
+    animation:
+        titleAppear 0.8s
+        ease forwards;
+}
+
+
+/* Gradient line under heading */
+
+h2::after {
+    content: "";
+
+    display: block;
+
+    width: 65px;
+    height: 4px;
+
+    margin:
+        13px auto 0;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #818cf8,
+            #c084fc
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(
+            129,
+            140,
+            248,
+            0.7
+        );
+
+    animation:
+        lineExpand 0.8s
+        ease forwards;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+
+    padding:
+        15px 17px;
+
+    margin:
+        5px 0 23px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    border-radius: 13px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 1px 2px
+        rgba(0, 0, 0, 0.08);
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Placeholder */
+
+input::placeholder {
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.50
+        );
+}
+
+
+/* Input hover */
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.13
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.30
+        );
+}
+
+
+/* Input focus */
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+    border-color:
+        #818cf8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            129,
+            140,
+            248,
+            0.16
+        ),
+
+        0 8px 25px
+        rgba(
+            79,
+            70,
+            229,
+            0.15
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+input[type="submit"] {
+    width: 100%;
+
+    padding:
+        15px 20px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7
+        );
+
+    background-size:
+        200% 200%;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+
+    box-shadow:
+        0 12px 25px
+        rgba(
+            99,
+            102,
+            241,
+            0.30
+        );
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-position 0.5s ease;
+}
+
+
+/* Submit hover */
+
+input[type="submit"]:hover {
+    background-position:
+        100% 50%;
+
+    transform:
+        translateY(-3px)
+        scale(1.01);
+
+    box-shadow:
+        0 18px 35px
+        rgba(
+            99,
+            102,
+            241,
+            0.42
+        );
+}
+
+
+/* Submit click */
+
+input[type="submit"]:active {
+    transform:
+        translateY(0)
+        scale(0.98);
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+   ========================================================= */
+
+.registerBtn {
+    background:
+        linear-gradient(
+            135deg,
+            #06b6d4,
+            #0ea5e9,
+            #2563eb
+        ) !important;
+
+    box-shadow:
+        0 12px 25px
+        rgba(
+            14,
+            165,
+            233,
+            0.28
+        );
+}
+
+
+.registerBtn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #0891b2,
+            #0284c7,
+            #1d4ed8
+        ) !important;
+
+    box-shadow:
+        0 18px 35px
+        rgba(
+            14,
+            165,
+            233,
+            0.40
+        );
+}
+
+
+/* =========================================================
+   NORMAL TEXT
+   ========================================================= */
+
+.text {
+    text-align: center;
+
+    font-size: 14px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.70
+        );
+
+    margin-top: 25px;
+
+    margin-bottom: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+   ========================================================= */
+
+.forgot {
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+
+.forgot a {
+    text-decoration: none;
+
+    color:
+        #a5b4fc;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    position: relative;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* Animated underline */
+
+.forgot a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -5px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #c084fc
+        );
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.forgot a:hover {
+    color: #ffffff;
+}
+
+
+.forgot a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   FLOATING ANIMATIONS
+   ========================================================= */
+
+@keyframes floatingGlow {
+
+    0%,
+    100% {
+        transform:
+            translate(
+                0,
+                0
+            );
+    }
+
+    50% {
+        transform:
+            translate(
+                90px,
+                60px
+            );
+    }
+}
+
+
+@keyframes floatingGlowReverse {
+
+    0%,
+    100% {
+        transform:
+            translate(
+                0,
+                0
+            );
+    }
+
+    50% {
+        transform:
+            translate(
+                -80px,
+                -60px
+            );
+    }
+}
+
+
+@keyframes crmFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(-12deg);
+    }
+
+    50% {
+        transform:
+            translate(
+                -50%,
+                -54%
+            )
+            rotate(-8deg);
+    }
+}
+
+
+@keyframes formAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 65px;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .form {
+        width:
+            calc(100% - 28px);
+
+        margin:
+            35px auto;
+
+        padding:
+            30px 22px;
+
+        border-radius:
+            23px;
+    }
+
+    h2 {
+        font-size: 28px;
+
+        margin-bottom:
+            30px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding:
+            14px;
+
+        font-size: 15px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+    }
+
+    .crm-background-text {
+        font-size: 120px;
+
+        letter-spacing:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}

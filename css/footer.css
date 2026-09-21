@@ -1,9 +1,11 @@
-/* =========================
-   FOOTER
-========================= */
+/* =========================================================
+   CRM FOOTER
+   MASTER THEME: loginformstyle.css
+   ========================================================= */
+
 .footer {
     width: 100%;
-    height: 35px;
+    height: 48px;
 
     position: fixed;
     bottom: 0;
@@ -13,19 +15,151 @@
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(90deg, #2C3E50, #66a190);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.82),
+            rgba(49, 46, 129, 0.72),
+            rgba(88, 28, 135, 0.68)
+        );
 
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
 
-    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.2);
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 -10px 35px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     z-index: 1000;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-/* Optional hover effect */
+
+/* =========================================================
+   TOP GLOW LINE
+   ========================================================= */
+
+.footer::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 140px;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #7c3aed,
+            #a855f7,
+            #06b6d4
+        );
+
+    box-shadow:
+        0 0 15px rgba(99, 102, 241, 0.55);
+}
+
+
+/* =========================================================
+   FOOTER HOVER
+   ========================================================= */
+
 .footer:hover {
-    background: linear-gradient(90deg, #243342, #5a9484);
-    transition: 0.3s ease;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30, 41, 59, 0.90),
+            rgba(67, 56, 202, 0.78),
+            rgba(107, 33, 168, 0.74)
+        );
+
+    box-shadow:
+        0 -12px 40px rgba(0, 0, 0, 0.34),
+        0 0 25px rgba(99, 102, 241, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
+
+.footer a {
+    color: rgba(255, 255, 255, 0.88);
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+
+.footer a:hover {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px rgba(129, 140, 248, 0.65);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .footer {
+        height: 45px;
+
+        padding: 0 15px;
+
+        font-size: 12px;
+
+        text-align: center;
+    }
+
+    .footer::before {
+        width: 90px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .footer,
+    .footer a {
+        transition: none;
+    }
 }
