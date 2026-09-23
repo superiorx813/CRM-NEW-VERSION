@@ -23,59 +23,103 @@ function escapeHTML(text) {
 // LOAD CUSTOMERS
 // ===========================================
 async function loadCustomers() {
-    const search =
-        document.getElementById("searchBox")?.value || "";
-    try {
-        console.log("Current Page:", currentPage);
-        const res = await fetch(
-            `${api}&action=getCustomers&page=${currentPage}&pageSize=${pageSize}&search=${encodeURIComponent(search)}`
-        );
-        const text = await res.text();
-        console.log("LOAD RESPONSE:", text);
-        const result = JSON.parse(text);
-        const tbody =
-            document.getElementById("customerTable");
-        tbody.innerHTML = "";
-        if (!result.data || result.data.length === 0) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="6"
-                        style="text-align:center;">
-                        No customers found
-                    </td>
-                </tr>
-            `;
-            return;
-        }
-        result.data.forEach(c => {
-            tbody.innerHTML += `
-                <tr>
-                    <td>${c.id}</td>
-                    <td>${escapeHTML(c.username)}</td>
-                    <td>${escapeHTML(c.name)}</td>
-                    <td>${escapeHTML(c.email)}</td>
-                    <td>${escapeHTML(c.phone)}</td>
-                    <td>
-                        <button
-                            class="action-btn btn-edit"
-                            onclick="editCustomer(${c.id})">
-                            Edit
-                        </button>
-                        <button
-                            class="action-btn btn-delete"
-                            onclick="deleteCustomer(${c.id})">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
+const search =
+document.getElementById("searchBox")?.value || "";
 
-        updatePagination(result.total);
-    } catch (err) {
-        console.error("LOAD ERROR:", err);
-        alert("Error loading customers");
+try {
+    console.log("Current Page:", currentPage);
+
+    const res = await fetch(
+        `${api}&action=getCustomers&page=${currentPage}&pageSize=${pageSize}&search=${encodeURIComponent(search)}`
+    );
+
+    const text = await res.text();
+
+    console.log("LOAD RESPONSE:", text);
+
+    const result = JSON.parse(text);
+
+    const tbody =
+        document.getElementById("customerTable");
+
+    tbody.innerHTML = "";
+
+    if (!result.data || result.data.length === 0) {
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6"
+                    style="text-align:center;">
+                    No customers found
+                </td>
+            </tr>
+        `;
+
+        return;
     }
+
+    result.data.forEach(c => {
+
+        tbody.innerHTML += `
+            <tr>
+
+                <td>
+                    <span class="customer-badge customer-id-badge">
+                        ${escapeHTML(String(c.id))}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="customer-badge customer-user-badge">
+                        ${escapeHTML(c.username)}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="customer-badge customer-name-badge">
+                        ${escapeHTML(c.name)}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="customer-badge customer-email-badge">
+                        ${escapeHTML(c.email)}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="customer-badge customer-phone-badge">
+                        ${escapeHTML(c.phone)}
+                    </span>
+                </td>
+
+                <td>
+                    <button
+                        class="action-btn btn-edit"
+                        onclick="editCustomer(${c.id})">
+                        Edit
+                    </button>
+
+                    <button
+                        class="action-btn btn-delete"
+                        onclick="deleteCustomer(${c.id})">
+                        Delete
+                    </button>
+                </td>
+
+            </tr>
+        `;
+    });
+
+    updatePagination(result.total);
+
+} catch (err) {
+
+    console.error("LOAD ERROR:", err);
+
+    alert("Error loading customers");
+}
+
 }
 // PAGINATION
 // ===========================================

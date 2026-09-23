@@ -1,1542 +1,1395 @@
 /* =========================================================
-   CRM CUSTOMERS PAGE
-   MASTER THEME: loginformstyle.css
-   ========================================================= */
-
+CRM CUSTOMERS PAGE
+MASTER THEME: loginformstyle.css
+========================================================= */
 
 /* =========================================================
-   GLOBAL RESET
-   ========================================================= */
+GLOBAL RESET
+========================================================= */
 
 * {
-    box-sizing: border-box;
-}
+  box-sizing: border-box;
+  }
 
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    margin: 25px;
-    min-height: 100vh;
-    padding: 35px 45px 40px;
-
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
-
-    color: #ffffff;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(99, 102, 241, 0.35),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 15%,
-            rgba(14, 165, 233, 0.28),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 85%,
-            rgba(168, 85, 247, 0.30),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #0f172a,
-            #172554,
-            #312e81
-        );
-
-    overflow-x: hidden;
-    position: relative;
+margin: 25px;
+min-height: 100vh;
+padding: 35px 45px 40px;
+font-family: "Inter", "Segoe UI", Arial, sans-serif;
+color: #ffffff;
+background:
+radial-gradient(
+circle at 15% 20%,
+rgba(99, 102, 241, 0.35),
+transparent 30%
+),
+radial-gradient(
+circle at 85% 15%,
+rgba(14, 165, 233, 0.28),
+transparent 30%
+),
+radial-gradient(
+circle at 80% 85%,
+rgba(168, 85, 247, 0.30),
+transparent 30%
+),
+linear-gradient(
+135deg,
+#0f172a,
+#172554,
+#312e81
+);
+overflow-x: hidden;
+position: relative;
 }
 
-
 /* =========================================================
-   ANIMATED BACKGROUND GLOW
-   ========================================================= */
+ANIMATED BACKGROUND GLOW
+========================================================= */
 
 body::before {
-    content: "";
-    position: fixed;
-
-    width: 420px;
-    height: 420px;
-
-    top: -100px;
-    left: -100px;
-
-    background: rgba(99, 102, 241, 0.30);
-
-    filter: blur(80px);
-    border-radius: 50%;
-
-    animation: floatingGlow 9s ease-in-out infinite;
-
-    pointer-events: none;
-    z-index: -2;
+content: "";
+position: fixed;
+width: 420px;
+height: 420px;
+top: -100px;
+left: -100px;
+background: rgba(99, 102, 241, 0.30);
+filter: blur(80px);
+border-radius: 50%;
+animation: floatingGlow 9s ease-in-out infinite;
+pointer-events: none;
+z-index: -2;
 }
-
 
 body::after {
-    content: "";
-    position: fixed;
-
-    width: 430px;
-    height: 430px;
-
-    right: -120px;
-    bottom: -120px;
-
-    background: rgba(14, 165, 233, 0.25);
-
-    filter: blur(85px);
-    border-radius: 50%;
-
-    animation: floatingGlowReverse 11s ease-in-out infinite;
-
-    pointer-events: none;
-    z-index: -2;
+content: "";
+position: fixed;
+width: 430px;
+height: 430px;
+right: -120px;
+bottom: -120px;
+background: rgba(14, 165, 233, 0.25);
+filter: blur(85px);
+border-radius: 50%;
+animation: floatingGlowReverse 11s ease-in-out infinite;
+pointer-events: none;
+z-index: -2;
 }
-
 
 /* =========================================================
-   CRM WATERMARK
-   ========================================================= */
+CRM WATERMARK
+========================================================= */
 
 body::marker {
-    display: none;
+display: none;
 }
-
-
-/*
-   Add the CRM watermark through the page background.
-   This does not require changing your HTML.
-*/
 
 body {
-    background-attachment: fixed;
+background-attachment: fixed;
 }
-
 
 /* Large CRM watermark */
 
 body > h2:first-of-type::before {
-    content: "CRM";
-
-    position: fixed;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%) rotate(-12deg);
-
-    font-size: clamp(180px, 30vw, 420px);
-    font-weight: 900;
-    letter-spacing: 25px;
-
-    color: rgba(255, 255, 255, 0.025);
-
-    pointer-events: none;
-    user-select: none;
-
-    z-index: -1;
-
-    white-space: nowrap;
+content: "CRM";
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) rotate(-12deg);
+font-size: clamp(180px, 30vw, 420px);
+font-weight: 900;
+letter-spacing: 25px;
+color: rgba(255, 255, 255, 0.025);
+pointer-events: none;
+user-select: none;
+z-index: -1;
+white-space: nowrap;
 }
 
-
 /* =========================================================
-   MAIN PAGE HEADING
-   ========================================================= */
+MAIN PAGE HEADING
+========================================================= */
 
 body > h2:first-of-type {
-    position: relative;
-
-    margin: 0 auto 28px;
-
-    text-align: center;
-
-    font-size: 32px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    color: #ffffff;
-
-    animation: titleAppear 0.8s ease forwards;
+position: relative;
+margin: 0 auto 28px;
+text-align: center;
+font-size: 32px;
+font-weight: 800;
+letter-spacing: 2px;
+color: #ffffff;
+animation: titleAppear 0.8s ease forwards;
 }
-
 
 body > h2:first-of-type::after {
-    content: "";
-
-    display: block;
-
-    width: 90px;
-    height: 4px;
-
-    margin: 12px auto 0;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #6366f1,
-            #7c3aed,
-            #a855f7
-        );
-
-    box-shadow:
-        0 0 15px rgba(124, 58, 237, 0.55);
-
-    animation: lineExpand 0.8s ease forwards;
+content: "";
+display: block;
+width: 90px;
+height: 4px;
+margin: 12px auto 0;
+border-radius: 10px;
+background:
+linear-gradient(
+90deg,
+#6366f1,
+#7c3aed,
+#a855f7
+);
+box-shadow:
+0 0 15px rgba(124, 58, 237, 0.55);
+animation: lineExpand 0.8s ease forwards;
 }
 
-
 /* =========================================================
-   DOWNLOAD PDF BUTTON
-   ========================================================= */
+DOWNLOAD PDF BUTTON
+========================================================= */
 
 .btn-success {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 46px;
-
-    padding: 12px 22px;
-
-    border-radius: 14px;
-
-    border: 1px solid rgba(255, 255, 255, 0.20);
-
-    background:
-        linear-gradient(
-            135deg,
-            #06b6d4,
-            #2563eb,
-            #4f46e5
-        );
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    letter-spacing: 0.3px;
-
-    box-shadow:
-        0 10px 30px rgba(37, 99, 235, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.20);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        filter 0.25s ease;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 46px;
+padding: 12px 22px;
+border-radius: 14px;
+border: 1px solid rgba(255, 255, 255, 0.20);
+background:
+linear-gradient(
+135deg,
+#06b6d4,
+#2563eb,
+#4f46e5
+);
+color: #ffffff;
+text-decoration: none;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 0.3px;
+box-shadow:
+0 10px 30px rgba(37, 99, 235, 0.25),
+inset 0 1px 0 rgba(255, 255, 255, 0.20);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+transition:
+transform 0.25s ease,
+box-shadow 0.25s ease,
+filter 0.25s ease;
 }
-
 
 .btn-success:hover {
-    transform: translateY(-3px);
-
-    filter: brightness(1.08);
-
-    box-shadow:
-        0 15px 35px rgba(37, 99, 235, 0.38),
-        0 0 25px rgba(99, 102, 241, 0.25);
+transform: translateY(-3px);
+filter: brightness(1.08);
+box-shadow:
+0 15px 35px rgba(37, 99, 235, 0.38),
+0 0 25px rgba(99, 102, 241, 0.25);
 }
-
 
 .btn-success:active {
-    transform: translateY(-1px);
+transform: translateY(-1px);
 }
 
-
 /* =========================================================
-   TWO COLUMN LAYOUT
-   ========================================================= */
+TWO COLUMN LAYOUT
+========================================================= */
 
 .content-row {
-    display: grid;
-
-    grid-template-columns:
-        minmax(320px, 0.9fr)
-        minmax(380px, 1.1fr);
-
-    gap: 25px;
-
-    width: 100%;
-
-    margin: 25px auto 35px;
+display: grid;
+grid-template-columns:
+minmax(320px, 0.9fr)
+minmax(380px, 1.1fr);
+gap: 25px;
+width: 100%;
+margin: 25px auto 35px;
 }
 
-
 /* =========================================================
-   LEFT / RIGHT BOX
-   ========================================================= */
+LEFT / RIGHT BOX
+========================================================= */
 
 .left-box,
 .right-box {
-    min-width: 0;
-
-    animation: formAppear 0.7s ease both;
+min-width: 0;
+animation: formAppear 0.7s ease both;
 }
-
 
 .right-box {
-    animation-delay: 0.12s;
+animation-delay: 0.12s;
 }
 
-
 /* =========================================================
-   GLASS CARD
-   ========================================================= */
+GLASS CARD
+========================================================= */
 
 .card {
-    position: relative;
-
-    width: 100%;
-
-    padding: 30px;
-
-    border-radius: 26px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.14),
-            rgba(255, 255, 255, 0.055)
-        );
-
-    border: 1px solid rgba(255, 255, 255, 0.20);
-
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.30),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+position: relative;
+width: 100%;
+padding: 30px;
+border-radius: 26px;
+background:
+linear-gradient(
+135deg,
+rgba(255, 255, 255, 0.14),
+rgba(255, 255, 255, 0.055)
+);
+border: 1px solid rgba(255, 255, 255, 0.20);
+backdrop-filter: blur(22px);
+-webkit-backdrop-filter: blur(22px);
+box-shadow:
+0 25px 60px rgba(0, 0, 0, 0.30),
+inset 0 1px 0 rgba(255, 255, 255, 0.12);
+overflow: hidden;
+transition:
+transform 0.3s ease,
+border-color 0.3s ease,
+box-shadow 0.3s ease;
 }
-
 
 .card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 160px;
-    height: 160px;
-
-    top: -90px;
-    right: -60px;
-
-    border-radius: 50%;
-
-    background: rgba(99, 102, 241, 0.20);
-
-    filter: blur(40px);
-
-    pointer-events: none;
+content: "";
+position: absolute;
+width: 160px;
+height: 160px;
+top: -90px;
+right: -60px;
+border-radius: 50%;
+background: rgba(99, 102, 241, 0.20);
+filter: blur(40px);
+pointer-events: none;
 }
-
 
 .card:hover {
-    transform: translateY(-4px);
-
-    border-color: rgba(129, 140, 248, 0.35);
-
-    box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.35),
-        0 0 30px rgba(99, 102, 241, 0.08);
+transform: translateY(-4px);
+border-color: rgba(129, 140, 248, 0.35);
+box-shadow:
+0 30px 70px rgba(0, 0, 0, 0.35),
+0 0 30px rgba(99, 102, 241, 0.08);
 }
 
-
 /* =========================================================
-   SECTION TITLES
-   ========================================================= */
+SECTION TITLES
+========================================================= */
 
 .section-title {
-    position: relative;
-
-    margin: 0 0 24px;
-
-    color: #ffffff;
-
-    font-size: 22px;
-    font-weight: 750;
-
-    letter-spacing: 0.3px;
+position: relative;
+margin: 0 0 24px;
+color: #ffffff;
+font-size: 22px;
+font-weight: 750;
+letter-spacing: 0.3px;
 }
-
 
 .section-title::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-    height: 3px;
-
-    margin-top: 9px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #6366f1,
-            #a855f7
-        );
-
-    box-shadow:
-        0 0 12px rgba(124, 58, 237, 0.45);
+content: "";
+display: block;
+width: 55px;
+height: 3px;
+margin-top: 9px;
+border-radius: 10px;
+background:
+linear-gradient(
+90deg,
+#6366f1,
+#a855f7
+);
+box-shadow:
+0 0 12px rgba(124, 58, 237, 0.45);
 }
 
-
 /* =========================================================
-   FORM LABELS
-   ========================================================= */
+FORM LABELS
+========================================================= */
 
 .label {
-    display: block;
-
-    margin: 17px 0 8px;
-
-    color: rgba(255, 255, 255, 0.86);
-
-    font-size: 14px;
-    font-weight: 600;
-
-    letter-spacing: 0.2px;
+display: block;
+margin: 17px 0 8px;
+color: rgba(255, 255, 255, 0.86);
+font-size: 14px;
+font-weight: 600;
+letter-spacing: 0.2px;
 }
 
-
 /* =========================================================
-   INPUTS
-   ========================================================= */
+INPUTS
+========================================================= */
 
 .input,
 .search-input {
-    width: 100%;
-
-    height: 48px;
-
-    padding: 0 15px;
-
-    border-radius: 13px;
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
-
-    outline: none;
-
-    background:
-        rgba(15, 23, 42, 0.58);
-
-    color: #ffffff;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
+width: 100%;
+height: 48px;
+padding: 0 15px;
+border-radius: 13px;
+border: 1px solid rgba(255, 255, 255, 0.18);
+outline: none;
+background:
+rgba(15, 23, 42, 0.58);
+color: #ffffff;
+font-family: inherit;
+font-size: 14px;
+box-shadow:
+inset 0 1px 0 rgba(255, 255, 255, 0.04);
+transition:
+border-color 0.25s ease,
+box-shadow 0.25s ease,
+background 0.25s ease,
+transform 0.25s ease;
 }
-
 
 .input::placeholder,
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.45);
+color: rgba(255, 255, 255, 0.45);
 }
-
 
 .input:hover,
 .search-input:hover {
-    border-color: rgba(129, 140, 248, 0.40);
+border-color: rgba(129, 140, 248, 0.40);
 }
-
 
 .input:focus,
 .search-input:focus {
-    background:
-        rgba(15, 23, 42, 0.72);
-
-    border-color: #6366f1;
-
-    box-shadow:
-        0 0 0 3px rgba(99, 102, 241, 0.16),
-        0 0 20px rgba(99, 102, 241, 0.16);
-
-    transform: translateY(-1px);
+background:
+rgba(15, 23, 42, 0.72);
+border-color: #6366f1;
+box-shadow:
+0 0 0 3px rgba(99, 102, 241, 0.16),
+0 0 20px rgba(99, 102, 241, 0.16);
+transform: translateY(-1px);
 }
 
-
 /* =========================================================
-   FORM ACTIONS
-   ========================================================= */
+FORM ACTIONS
+========================================================= */
 
 .form-actions {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-
-    margin-top: 8px;
+display: flex;
+align-items: center;
+gap: 12px;
+flex-wrap: wrap;
+margin-top: 8px;
 }
 
-
 /* =========================================================
-   PRIMARY BUTTON
-   ========================================================= */
+PRIMARY BUTTON
+========================================================= */
 
 .btn-primary {
-    min-height: 44px;
-
-    padding: 11px 22px;
-
-    border: 0;
-
-    border-radius: 13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6366f1,
-            #7c3aed,
-            #a855f7
-        );
-
-    background-size: 200% 200%;
-
-    color: #ffffff;
-
-    font-family: inherit;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 10px 25px rgba(99, 102, 241, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background-position 0.5s ease;
+min-height: 44px;
+padding: 11px 22px;
+border: 0;
+border-radius: 13px;
+background:
+linear-gradient(
+135deg,
+#6366f1,
+#7c3aed,
+#a855f7
+);
+background-size: 200% 200%;
+color: #ffffff;
+font-family: inherit;
+font-size: 14px;
+font-weight: 700;
+cursor: pointer;
+box-shadow:
+0 10px 25px rgba(99, 102, 241, 0.25),
+inset 0 1px 0 rgba(255, 255, 255, 0.18);
+transition:
+transform 0.25s ease,
+box-shadow 0.25s ease,
+background-position 0.5s ease;
 }
-
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-
-    background-position: 100% 50%;
-
-    box-shadow:
-        0 15px 32px rgba(124, 58, 237, 0.38),
-        0 0 20px rgba(168, 85, 247, 0.15);
+transform: translateY(-3px);
+background-position: 100% 50%;
+box-shadow:
+0 15px 32px rgba(124, 58, 237, 0.38),
+0 0 20px rgba(168, 85, 247, 0.15);
 }
-
 
 .btn-primary:active {
-    transform: translateY(-1px);
+transform: translateY(-1px);
 }
 
-
 /* =========================================================
-   CLEAR BUTTON
-   ========================================================= */
+CLEAR BUTTON
+========================================================= */
 
 .btn-clear {
-    min-height: 44px;
-
-    padding: 10px 20px;
-
-    border-radius: 13px;
-
-    border: 1px solid rgba(255, 255, 255, 0.20);
-
-    background:
-        rgba(255, 255, 255, 0.08);
-
-    color: rgba(255, 255, 255, 0.88);
-
-    font-family: inherit;
-
-    font-size: 14px;
-    font-weight: 650;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+min-height: 44px;
+padding: 10px 20px;
+border-radius: 13px;
+border: 1px solid rgba(255, 255, 255, 0.20);
+background:
+rgba(255, 255, 255, 0.08);
+color: rgba(255, 255, 255, 0.88);
+font-family: inherit;
+font-size: 14px;
+font-weight: 650;
+cursor: pointer;
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+transition:
+transform 0.25s ease,
+background 0.25s ease,
+border-color 0.25s ease;
 }
-
 
 .btn-clear:hover {
-    transform: translateY(-2px);
-
-    background:
-        rgba(255, 255, 255, 0.14);
-
-    border-color:
-        rgba(129, 140, 248, 0.45);
-
-    color: #ffffff;
+transform: translateY(-2px);
+background:
+rgba(255, 255, 255, 0.14);
+border-color:
+rgba(129, 140, 248, 0.45);
+color: #ffffff;
 }
 
-
 /* =========================================================
-   SEARCH CARD
-   ========================================================= */
+SEARCH CARD
+========================================================= */
 
 .search-card {
-    min-height: 100%;
+min-height: 100%;
 }
-
 
 .search-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    width: 100%;
+display: flex;
+align-items: center;
+gap: 12px;
+width: 100%;
 }
-
 
 .search-row .search-input {
-    flex: 1;
+flex: 1;
 }
-
 
 .search-row .btn-clear {
-    flex-shrink: 0;
+flex-shrink: 0;
 }
-
 
 .search-note {
-    margin-top: 16px;
-
-    padding: 11px 14px;
-
-    border-radius: 12px;
-
-    border: 1px solid rgba(255, 255, 255, 0.10);
-
-    background:
-        rgba(255, 255, 255, 0.055);
-
-    color:
-        rgba(255, 255, 255, 0.58);
-
-    font-size: 13px;
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+margin-top: 16px;
+padding: 11px 14px;
+border-radius: 12px;
+border: 1px solid rgba(255, 255, 255, 0.10);
+background:
+rgba(255, 255, 255, 0.055);
+color:
+rgba(255, 255, 255, 0.58);
+font-size: 13px;
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
 }
 
-
 /* =========================================================
-   CUSTOMER LIST HEADING
-   ========================================================= */
+CUSTOMER LIST HEADING
+========================================================= */
 
 body > .section-title {
-    width: 100%;
-
-    margin: 35px 0 18px;
-
-    font-size: 24px;
+width: 100%;
+margin: 35px 0 18px;
+font-size: 24px;
 }
 
-
 /* =========================================================
-   TABLE WRAPPER
-   ========================================================= */
+TABLE WRAPPER
+========================================================= */
 
 .table-wrap {
-    width: 100%;
-
-    overflow-x: auto;
-
-    border-radius: 24px;
-
-    border: 1px solid rgba(255, 255, 255, 0.16);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.11),
-            rgba(255, 255, 255, 0.045)
-        );
-
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
-    scrollbar-width: thin;
+width: 100%;
+overflow-x: auto;
+border-radius: 24px;
+border: 1px solid rgba(255, 255, 255, 0.16);
+background:
+linear-gradient(
+135deg,
+rgba(255, 255, 255, 0.11),
+rgba(255, 255, 255, 0.045)
+);
+backdrop-filter: blur(22px);
+-webkit-backdrop-filter: blur(22px);
+box-shadow:
+0 25px 60px rgba(0, 0, 0, 0.28),
+inset 0 1px 0 rgba(255, 255, 255, 0.08);
+scrollbar-width: thin;
 }
 
-
 /* =========================================================
-   TABLE
-   ========================================================= */
+TABLE
+========================================================= */
 
 .data-table {
-    width: 100%;
-
-    min-width: 850px;
-
-    border-collapse: separate;
-    border-spacing: 0;
-
-    color: #ffffff;
-
-    font-size: 14px;
+width: 100%;
+min-width: 850px;
+border-collapse: separate;
+border-spacing: 0;
+color: #ffffff;
+font-size: 14px;
 }
 
-
 /* =========================================================
-   TABLE HEADER
-   ========================================================= */
+TABLE HEADER
+========================================================= */
 
 .data-table thead th {
-    padding: 17px 16px;
-
-    text-align: left;
-
-    color: #ffffff;
-
-    font-size: 13px;
-    font-weight: 750;
-
-    letter-spacing: 0.6px;
-
-    text-transform: uppercase;
-
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.16);
-
-    background:
-        linear-gradient(
-            100deg,
-            #4338ca,
-            #6366f1,
-            #7c3aed,
-            #a855f7
-        );
-
-    background-size: 300% 300%;
-
-    animation: tableHeaderMove 8s ease infinite;
+padding: 17px 16px;
+text-align: left;
+color: #ffffff;
+font-size: 13px;
+font-weight: 750;
+letter-spacing: 0.6px;
+text-transform: uppercase;
+border-bottom:
+1px solid rgba(255, 255, 255, 0.16);
+background:
+linear-gradient(
+100deg,
+#4338ca,
+#6366f1,
+#7c3aed,
+#a855f7
+);
+background-size: 300% 300%;
+animation: tableHeaderMove 8s ease infinite;
 }
-
 
 .data-table thead th:first-child {
-    border-top-left-radius: 22px;
+border-top-left-radius: 22px;
 }
-
 
 .data-table thead th:last-child {
-    border-top-right-radius: 22px;
+border-top-right-radius: 22px;
 }
 
-
 /* =========================================================
-   TABLE BODY
-   ========================================================= */
+TABLE BODY
+========================================================= */
 
 .data-table tbody tr {
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
+transition:
+background 0.25s ease,
+transform 0.25s ease;
 }
-
 
 .data-table tbody tr:hover {
-    background:
-        rgba(99, 102, 241, 0.12);
+background:
+rgba(99, 102, 241, 0.12);
 }
-
 
 .data-table tbody td {
-    padding: 16px;
-
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
-
-    color:
-        rgba(255, 255, 255, 0.82);
-
-    vertical-align: middle;
+padding: 16px;
+border-bottom:
+1px solid rgba(255, 255, 255, 0.08);
+color:
+rgba(255, 255, 255, 0.82);
+vertical-align: middle;
 }
-
 
 .data-table tbody tr:last-child td {
-    border-bottom: none;
+border-bottom: none;
 }
-
 
 .data-table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 22px;
+border-bottom-left-radius: 22px;
 }
-
 
 .data-table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 22px;
+border-bottom-right-radius: 22px;
 }
 
-
 /* =========================================================
-   TABLE ID
-   ========================================================= */
+TABLE ID
+========================================================= */
 
 .data-table tbody td:first-child {
-    color: #a5b4fc;
-
-    font-weight: 700;
+color: #a5b4fc;
+font-weight: 700;
 }
 
-
 /* =========================================================
-   ACTION BUTTONS
-   ========================================================= */
+ACTION BUTTONS
+========================================================= */
 
 .action-btn {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 36px;
-
-    padding: 8px 14px;
-
-    border-radius: 10px;
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
-    font-family: inherit;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 36px;
+padding: 8px 14px;
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.15);
+font-family: inherit;
+font-size: 13px;
+font-weight: 700;
+cursor: pointer;
+transition:
+transform 0.2s ease,
+box-shadow 0.2s ease,
+filter 0.2s ease;
 }
-
 
 .action-btn:hover {
-    transform: translateY(-2px);
-
-    filter: brightness(1.08);
+transform: translateY(-2px);
+filter: brightness(1.08);
 }
 
-
 /* =========================================================
-   EDIT BUTTON
-   ========================================================= */
+EDIT BUTTON
+========================================================= */
 
 .btn-edit {
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #4f46e5,
-            #6366f1
-        );
-
-    box-shadow:
-        0 8px 20px rgba(37, 99, 235, 0.22);
+color: #ffffff;
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#4f46e5,
+#6366f1
+);
+box-shadow:
+0 8px 20px rgba(37, 99, 235, 0.22);
 }
 
-
 /* =========================================================
-   DELETE / CANCEL BUTTON
-   ========================================================= */
+DELETE / CANCEL BUTTON
+========================================================= */
 
 .btn-delete {
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #dc2626,
-            #e11d48
-        );
-
-    box-shadow:
-        0 8px 20px rgba(220, 38, 38, 0.20);
+color: #ffffff;
+background:
+linear-gradient(
+135deg,
+#dc2626,
+#e11d48
+);
+box-shadow:
+0 8px 20px rgba(220, 38, 38, 0.20);
 }
 
-
 /* =========================================================
-   PAGINATION
-   ========================================================= */
+PAGINATION
+========================================================= */
 
 #pagination {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-
-    margin: 22px 0 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+flex-wrap: wrap;
+margin: 22px 0 10px;
 }
-
 
 .page-btn {
-    min-width: 38px;
-    height: 38px;
-
-    padding: 0 12px;
-
-    border-radius: 10px;
-
-    border: 1px solid rgba(255, 255, 255, 0.16);
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-    color:
-        rgba(255, 255, 255, 0.80);
-
-    font-family: inherit;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+min-width: 38px;
+height: 38px;
+padding: 0 12px;
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.16);
+background:
+rgba(255, 255, 255, 0.07);
+color:
+rgba(255, 255, 255, 0.80);
+font-family: inherit;
+font-size: 13px;
+font-weight: 700;
+cursor: pointer;
+transition:
+transform 0.2s ease,
+background 0.2s ease,
+border-color 0.2s ease;
 }
-
 
 .page-btn:hover {
-    transform: translateY(-2px);
-
-    background:
-        rgba(99, 102, 241, 0.20);
-
-    border-color:
-        rgba(129, 140, 248, 0.45);
+transform: translateY(-2px);
+background:
+rgba(99, 102, 241, 0.20);
+border-color:
+rgba(129, 140, 248, 0.45);
 }
-
 
 .active-page {
-    color: #ffffff;
-
-    border-color: transparent;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6366f1,
-            #7c3aed,
-            #a855f7
-        );
-
-    box-shadow:
-        0 8px 20px rgba(99, 102, 241, 0.25);
+color: #ffffff;
+border-color: transparent;
+background:
+linear-gradient(
+135deg,
+#6366f1,
+#7c3aed,
+#a855f7
+);
+box-shadow:
+0 8px 20px rgba(99, 102, 241, 0.25);
 }
 
-
 /* =========================================================
-   MODAL OVERLAY
-   ========================================================= */
+MODAL OVERLAY
+========================================================= */
 
 .modal-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background:
-        rgba(2, 6, 23, 0.70);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    z-index: 9999;
-
-    animation: modalFadeIn 0.25s ease;
+position: fixed;
+inset: 0;
+display: none;
+align-items: center;
+justify-content: center;
+padding: 25px;
+background:
+rgba(2, 6, 23, 0.70);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+z-index: 9999;
+animation: modalFadeIn 0.25s ease;
 }
-
-
-/*
-   If JavaScript uses display:flex,
-   this styling will automatically work.
-*/
-
 
 /* =========================================================
-   MODAL BOX
-   ========================================================= */
+MODAL BOX
+========================================================= */
 
 .modal-box {
-    position: relative;
-
-    width: min(500px, 100%);
-
-    padding: 32px;
-
-    border-radius: 26px;
-
-    border: 1px solid rgba(255, 255, 255, 0.20);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0.06)
-        );
-
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-
-    box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
-
-    color: #ffffff;
-
-    animation: modalAppear 0.35s ease;
+position: relative;
+width: min(500px, 100%);
+padding: 32px;
+border-radius: 26px;
+border: 1px solid rgba(255, 255, 255, 0.20);
+background:
+linear-gradient(
+135deg,
+rgba(255, 255, 255, 0.15),
+rgba(255, 255, 255, 0.06)
+);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+box-shadow:
+0 30px 90px rgba(0, 0, 0, 0.55),
+inset 0 1px 0 rgba(255, 255, 255, 0.12);
+color: #ffffff;
+animation: modalAppear 0.35s ease;
 }
-
 
 .modal-box::before {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: -60px;
-    top: -60px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(99, 102, 241, 0.22);
-
-    filter: blur(35px);
-
-    pointer-events: none;
+content: "";
+position: absolute;
+width: 150px;
+height: 150px;
+right: -60px;
+top: -60px;
+border-radius: 50%;
+background:
+rgba(99, 102, 241, 0.22);
+filter: blur(35px);
+pointer-events: none;
 }
-
 
 .modal-box h2,
 .modal-box h3 {
-    position: relative;
-
-    color: #ffffff;
+position: relative;
+color: #ffffff;
 }
-
 
 .modal-box h2 {
-    margin: 0 0 24px;
-
-    font-size: 25px;
-    font-weight: 750;
-
-    text-align: center;
+margin: 0 0 24px;
+font-size: 25px;
+font-weight: 750;
+text-align: center;
 }
-
 
 .modal-box h2::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-    height: 3px;
-
-    margin: 9px auto 0;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #6366f1,
-            #a855f7
-        );
+content: "";
+display: block;
+width: 55px;
+height: 3px;
+margin: 9px auto 0;
+border-radius: 10px;
+background:
+linear-gradient(
+90deg,
+#6366f1,
+#a855f7
+);
 }
 
-
 /* =========================================================
-   MODAL LABELS
-   ========================================================= */
+MODAL LABELS
+========================================================= */
 
 .modal-box label {
-    display: block;
-
-    margin: 16px 0 8px;
-
-    color:
-        rgba(255, 255, 255, 0.82);
-
-    font-size: 14px;
-    font-weight: 600;
+display: block;
+margin: 16px 0 8px;
+color:
+rgba(255, 255, 255, 0.82);
+font-size: 14px;
+font-weight: 600;
 }
 
-
 /* =========================================================
-   MODAL PARAGRAPH
-   ========================================================= */
+MODAL PARAGRAPH
+========================================================= */
 
 .modal-box p {
-    color:
-        rgba(255, 255, 255, 0.72);
-
-    line-height: 1.6;
+color:
+rgba(255, 255, 255, 0.72);
+line-height: 1.6;
 }
 
-
 /* =========================================================
-   MODAL ACTIONS
-   ========================================================= */
+MODAL ACTIONS
+========================================================= */
 
 .modal-actions {
-    display: flex;
-
-    align-items: center;
-    justify-content: flex-end;
-
-    gap: 10px;
-
-    margin-top: 25px;
-
-    flex-wrap: wrap;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+gap: 10px;
+margin-top: 25px;
+flex-wrap: wrap;
 }
 
-
 /* =========================================================
-   EMAIL EXISTS MODAL
-   ========================================================= */
+EMAIL EXISTS MODAL
+========================================================= */
 
 #emailExistsModal .modal-box h3 {
-    color: #fbbf24 !important;
-
-    font-size: 21px;
+color: #fbbf24 !important;
+font-size: 21px;
 }
 
-
 /* =========================================================
-   HOME / BOTTOM SECTION
-   ========================================================= */
+HOME / BOTTOM SECTION
+========================================================= */
 
 .bottom-section {
-    display: flex;
-
-    justify-content: center;
-
-    width: 100%;
-
-    margin-top: 35px;
-    padding-top: 25px;
-
-    border-top:
-        1px solid rgba(255, 255, 255, 0.10);
+display: flex;
+justify-content: center;
+width: 100%;
+margin-top: 35px;
+padding-top: 25px;
+border-top:
+1px solid rgba(255, 255, 255, 0.10);
 }
 
-
 /* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
+ACCESSIBILITY
+========================================================= */
 
 button:focus-visible,
 input:focus-visible,
 a:focus-visible {
-    outline: 2px solid #818cf8;
-
-    outline-offset: 3px;
-
-    box-shadow:
-        0 0 0 5px rgba(99, 102, 241, 0.15);
+outline: 2px solid #818cf8;
+outline-offset: 3px;
+box-shadow:
+0 0 0 5px rgba(99, 102, 241, 0.15);
 }
 
-
 /* =========================================================
-   SCROLLBAR
-   ========================================================= */
+SCROLLBAR
+========================================================= */
 
 ::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
+width: 9px;
+height: 9px;
 }
-
 
 ::-webkit-scrollbar-track {
-    background:
-        rgba(15, 23, 42, 0.55);
+background:
+rgba(15, 23, 42, 0.55);
 }
-
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #6366f1,
-            #7c3aed
-        );
+border-radius: 20px;
+background:
+linear-gradient(
+180deg,
+#6366f1,
+#7c3aed
+);
 }
-
 
 ::-webkit-scrollbar-thumb:hover {
-    background:
-        linear-gradient(
-            180deg,
-            #818cf8,
-            #a855f7
-        );
+background:
+linear-gradient(
+180deg,
+#818cf8,
+#a855f7
+);
 }
 
-
 /* =========================================================
-   ANIMATIONS
-   ========================================================= */
+ANIMATIONS
+========================================================= */
 
 @keyframes floatingGlow {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    50% {
-        transform: translate(40px, 30px) scale(1.08);
-    }
+0%,
+100% {
+transform: translate(0, 0) scale(1);
 }
 
+
+50% {
+    transform: translate(40px, 30px) scale(1.08);
+}
+
+
+}
 
 @keyframes floatingGlowReverse {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    50% {
-        transform: translate(-35px, -25px) scale(1.08);
-    }
+0%,
+100% {
+transform: translate(0, 0) scale(1);
 }
 
+
+50% {
+    transform: translate(-35px, -25px) scale(1.08);
+}
+
+
+}
 
 @keyframes formAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+from {
+opacity: 0;
+transform: translateY(25px);
 }
 
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+}
 
 @keyframes titleAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(-15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+from {
+opacity: 0;
+transform: translateY(-15px);
 }
 
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+}
 
 @keyframes lineExpand {
-
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 90px;
-    }
+from {
+width: 0;
 }
 
+
+to {
+    width: 90px;
+}
+
+
+}
 
 @keyframes tableHeaderMove {
-
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+0% {
+background-position: 0% 50%;
 }
 
+
+50% {
+    background-position: 100% 50%;
+}
+
+100% {
+    background-position: 0% 50%;
+}
+
+
+}
 
 @keyframes modalFadeIn {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+from {
+opacity: 0;
 }
 
+
+to {
+    opacity: 1;
+}
+
+
+}
 
 @keyframes modalAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+from {
+opacity: 0;
+transform: translateY(25px) scale(0.96);
 }
 
 
+to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+}
+
 /* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
+RESPONSIVE - TABLET
+========================================================= */
 
 @media (max-width: 1000px) {
 
-    body {
-        padding: 30px 25px 35px;
-    }
 
-    .content-row {
-        grid-template-columns: 1fr;
-    }
+body {
+    padding: 30px 25px 35px;
+}
 
-    .left-box,
-    .right-box {
-        width: 100%;
-    }
+.content-row {
+    grid-template-columns: 1fr;
+}
 
-    .card {
-        padding: 26px;
-    }
+.left-box,
+.right-box {
+    width: 100%;
+}
 
+.card {
+    padding: 26px;
 }
 
 
+}
+
 /* =========================================================
-   RESPONSIVE - MOBILE
-   ========================================================= */
+RESPONSIVE - MOBILE
+========================================================= */
 
 @media (max-width: 650px) {
 
-    body {
-        padding: 25px 15px 30px;
-    }
 
+body {
+    padding: 25px 15px 30px;
+}
 
-    body > h2:first-of-type {
-        font-size: 25px;
+body > h2:first-of-type {
+    font-size: 25px;
+    letter-spacing: 1px;
+}
 
-        letter-spacing: 1px;
-    }
+body > h2:first-of-type::before {
+    font-size: 150px;
+}
 
+.content-row {
+    gap: 18px;
+    margin-top: 20px !important;
+}
 
-    body > h2:first-of-type::before {
-        font-size: 150px;
-    }
+.card {
+    padding: 22px;
+    border-radius: 21px;
+}
 
+.section-title {
+    font-size: 20px;
+}
 
-    .content-row {
-        gap: 18px;
+.search-row {
+    flex-direction: column;
+    align-items: stretch;
+}
 
-        margin-top: 20px !important;
-    }
+.search-row .btn-clear {
+    width: 100%;
+}
 
+.form-actions {
+    flex-direction: column;
+    align-items: stretch;
+}
 
-    .card {
-        padding: 22px;
+.form-actions button {
+    width: 100%;
+}
 
-        border-radius: 21px;
-    }
+.btn-success {
+    width: 100%;
+}
 
+.table-wrap {
+    border-radius: 18px;
+}
 
-    .section-title {
-        font-size: 20px;
-    }
+.modal-overlay {
+    padding: 15px;
+}
 
+.modal-box {
+    padding: 24px;
+    border-radius: 21px;
+}
 
-    .search-row {
-        flex-direction: column;
+.modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+}
 
-        align-items: stretch;
-    }
-
-
-    .search-row .btn-clear {
-        width: 100%;
-    }
-
-
-    .form-actions {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-
-    .form-actions button {
-        width: 100%;
-    }
-
-
-    .btn-success {
-        width: 100%;
-    }
-
-
-    .table-wrap {
-        border-radius: 18px;
-    }
-
-
-    .modal-overlay {
-        padding: 15px;
-    }
-
-
-    .modal-box {
-        padding: 24px;
-
-        border-radius: 21px;
-    }
-
-
-    .modal-actions {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-
-    .modal-actions button {
-        width: 100%;
-    }
-
+.modal-actions button {
+    width: 100%;
 }
 
 
+}
+
 /* =========================================================
-   SMALL MOBILE
-   ========================================================= */
+SMALL MOBILE
+========================================================= */
 
 @media (max-width: 420px) {
 
-    body {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
 
+body {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
-    .card {
-        padding: 18px;
-    }
+.card {
+    padding: 18px;
+}
 
+.modal-box {
+    padding: 20px;
+}
 
-    .modal-box {
-        padding: 20px;
-    }
+.input,
+.search-input {
+    height: 45px;
+}
 
-
-    .input,
-    .search-input {
-        height: 45px;
-    }
-
-
-    .btn-primary,
-    .btn-clear {
-        min-height: 43px;
-    }
-
+.btn-primary,
+.btn-clear {
+    min-height: 43px;
 }
 
 
+}
+
 /* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
+
+*,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+}
+
+
+}
+
+/* =========================================================
+CUSTOMER TABLE GLASS BADGES
+ONLY BADGE STYLING
+========================================================= */
+
+.customer-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 32px;
+padding: 6px 11px;
+
+border-radius: 10px;
+
+border: 1px solid rgba(255, 255, 255, 0.38);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.16),
+        rgba(255, 255, 255, 0.055)
+    );
+
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+
+color: #ffffff !important;
+
+font-size: 12px;
+font-weight: 650;
+
+white-space: nowrap;
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 5px 15px rgba(0, 0, 0, 0.16);
+
+transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+
+
+}
+
+.customer-badge:hover {
+transform: translateY(-2px);
+
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    0 8px 22px rgba(0, 0, 0, 0.22);
+
+
+}
+
+/* =========================================================
+ID BADGE
+BRIGHT PURPLE
+========================================================= */
+
+.customer-id-badge {
+color: #ffffff !important;
+
+
+border-color: rgba(196, 181, 253, 0.72);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(139, 92, 246, 0.48),
+        rgba(99, 102, 241, 0.28)
+    );
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 0 18px rgba(139, 92, 246, 0.28);
+
+
+}
+
+/* =========================================================
+USER BADGE
+BRIGHT CYAN
+FIXED COLOR FOR EVERY USER
+========================================================= */
+
+.customer-user-badge {
+color: #ffffff !important;
+
+
+border-color: rgba(103, 232, 249, 0.72);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(6, 182, 212, 0.48),
+        rgba(14, 165, 233, 0.28)
+    );
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 0 18px rgba(6, 182, 212, 0.28);
+
+
+}
+
+/* =========================================================
+NAME BADGE
+BRIGHT INDIGO
+========================================================= */
+
+.customer-name-badge {
+color: #ffffff !important;
+
+
+border-color: rgba(165, 180, 252, 0.72);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.48),
+        rgba(79, 70, 229, 0.28)
+    );
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 0 18px rgba(99, 102, 241, 0.28);
+
+
+}
+
+/* =========================================================
+EMAIL BADGE
+BRIGHT GREEN
+========================================================= */
+
+.customer-email-badge {
+color: #ffffff !important;
+
+
+border-color: rgba(134, 239, 172, 0.72);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(34, 197, 94, 0.46),
+        rgba(16, 185, 129, 0.27)
+    );
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 0 18px rgba(34, 197, 94, 0.27);
+
+
+}
+
+/* =========================================================
+PHONE BADGE
+BRIGHT PINK
+========================================================= */
+
+.customer-phone-badge {
+color: #ffffff !important;
+
+
+border-color: rgba(249, 168, 212, 0.72);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(236, 72, 153, 0.48),
+        rgba(168, 85, 247, 0.28)
+    );
+
+box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 0 18px rgba(236, 72, 153, 0.28);
+
+
+}
+
+/* =========================================================
+RESPONSIVE BADGES
+========================================================= */
+
+@media (max-width: 650px) {
+
+
+.customer-badge {
+    padding: 5px 9px;
+    font-size: 11px;
+}
+
 
 }
