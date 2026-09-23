@@ -1,58 +1,130 @@
+/* =========================================================
+REQUEST PDF REPORT
+========================================================= */
 
-body{
-
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    padding: 20px;
-
+body {
+margin: 0;
+padding: 30px;
+font-family: Arial, Helvetica, sans-serif;
+background: #f4f7fb;
+color: #1f2937;
 }
 
-.report-container{
-
-    width: 100%;
-
+.report-container {
+width: 100%;
+padding: 25px;
+background: #ffffff;
+border: 1px solid #e5e7eb;
+border-radius: 16px;
 }
 
-h2{
+/* HEADER */
 
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 25px;
-
+.report-header {
+margin-bottom: 22px;
+padding: 20px 22px;
+background: #111827;
+border-radius: 12px;
 }
 
-table{
-
-    width: 100%;
-    border-collapse: collapse;
-
+.report-title {
+margin: 0;
+color: #ffffff;
+font-size: 25px;
+font-weight: 700;
 }
 
-h1{
-            text-align:center;
-            margin-bottom:20px;
-        }
-
-th{
-
-    background: #3498db;
-    color: white;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    font-size: 15px;
-
+.report-subtitle {
+margin: 7px 0 0;
+color: #cbd5e1;
+font-size: 11px;
 }
 
-td{
+/* TABLE */
 
-    padding: 10px;
-    border: 1px solid #cccccc;
-    font-size: 14px;
-
+.report-table {
+width: 100%;
+border-collapse: collapse;
+border: 1px solid #e5e7eb;
 }
 
-tr:nth-child(even){
+.report-table thead th {
+padding: 12px;
+background: #f1f5f9;
+color: #334155;
+border: 1px solid #e2e8f0;
+font-size: 10px;
+font-weight: 700;
+text-align: left;
+text-transform: uppercase;
+}
 
-    background: #f2f2f2;
+.report-table tbody td {
+padding: 13px;
+background: #ffffff;
+color: #374151;
+border: 1px solid #e5e7eb;
+font-size: 10px;
+vertical-align: top;
+}
 
+.report-table tbody tr:nth-child(even) td {
+background: #f8fafc;
+}
+
+/* ID */
+
+.request-id {
+display: inline-block;
+min-width: 28px;
+padding: 5px 9px;
+background: #eef2ff;
+border: 1px solid #c7d2fe;
+border-radius: 7px;
+color: #4338ca;
+font-size: 9px;
+font-weight: 700;
+text-align: center;
+}
+
+/* TITLE */
+
+.request-title {
+color: #111827;
+font-size: 10px;
+font-weight: 700;
+}
+
+/* DEPARTMENT */
+
+.department-badge {
+display: inline-block;
+padding: 5px 10px;
+background: #ecfeff;
+border: 1px solid #a5f3fc;
+border-radius: 20px;
+color: #0e7490;
+font-size: 9px;
+font-weight: 700;
+}
+
+/* DESCRIPTION */
+
+.request-description {
+color: #000000;
+font-size: 10px;
+font-weight: 700;
+line-height: 1.6;
+}
+
+/* EMPTY */
+
+.no-data {
+padding: 35px;
+background: #f8fafc;
+border: 1px solid #e5e7eb;
+border-radius: 12px;
+color: #64748b;
+font-size: 12px;
+text-align: center;
 }

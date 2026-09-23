@@ -1,61 +1,96 @@
-
-<cfheader
-    name="Content-Disposition"
-    value="inline; filename=Request_Report.pdf">
-
-<cfcontent type="application/pdf">
-
-<cfdocument format="PDF">
+<cfdocument
+ format="PDF"
+ name="pdfContent">
 
 <html>
 
 <head>
+<meta charset="UTF-8">
 
-    <link
-        rel="stylesheet"
-        href="/CRMdui/css/downloadreport.css">
-
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="/CRMdui/css/downloadreport.css">
 </head>
 
 <body>
+<div class="report-container">
 
-    <div class="report-container">
+    <div class="report-header">
 
-        <h2>Requests PDF Report</h2>
+        <h2 class="report-title">
+            Requests PDF Report
+        </h2>
 
-        <table>
+        <p class="report-subtitle">
+            Customer request details and department information
+        </p>
 
-            <tr>
+    </div>
 
-                <th>ID</th>
+    <cfif data.getRequests.recordCount GT 0>
 
-                <th>Title</th>
+        <table class="report-table">
 
-                <th>Department</th>
-
-                <th>Description</th>
-
-            </tr>
-
-            <cfoutput query="data.getRequests">
+            <thead>
 
                 <tr>
-
-                    <td>#user_request_id#</td>
-
-                    <td>#Title#</td>
-
-                    <td>#Department#</td>
-
-                    <td>#Description#</td>
-
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Department</th>
+                    <th>Description</th>
                 </tr>
 
-            </cfoutput>
+            </thead>
+
+            <tbody>
+
+                <cfoutput query="data.getRequests">
+
+                    <tr>
+
+                        <td>
+                            <span class="request-id">
+                                #request_id#
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="request-title">
+                                #Title#
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="department-badge">
+                                #Department#
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="request-description">
+                                #Description#
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </cfoutput>
+
+            </tbody>
 
         </table>
 
-    </div>
+    <cfelse>
+
+        <div class="no-data">
+            No requests found for the selected department.
+        </div>
+
+    </cfif>
+
+</div>
+
 
 </body>
 
@@ -63,3 +98,11 @@
 
 </cfdocument>
 
+<cfheader
+ name="Content-Disposition"
+ value="inline; filename=Request_Report.pdf">
+
+<cfcontent
+ type="application/pdf"
+ variable="#pdfContent#"
+ reset="true">
