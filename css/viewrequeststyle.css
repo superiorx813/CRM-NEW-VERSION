@@ -922,3 +922,256 @@ a:focus-visible {
         transition: none;
     }
 }
+
+
+/* =========================================================
+   DATA BADGES
+   ID + DEPARTMENT
+========================================================= */
+
+/* =========================
+   COMMON BADGE STYLE
+========================= */
+
+.id-badge,
+.department-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 42px;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    box-sizing: border-box;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    line-height: 1;
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* =========================
+   ID BADGES
+========================= */
+
+.id-badge:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, 0.28);
+
+    filter: brightness(1.1);
+}
+
+
+/* ID COLOR 1 */
+
+.id-badge-0 {
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #4338ca
+        );
+}
+
+
+/* ID COLOR 2 */
+
+.id-badge-1 {
+    background:
+        linear-gradient(
+            135deg,
+            #06b6d4,
+            #0891b2
+        );
+}
+
+
+/* ID COLOR 3 */
+
+.id-badge-2 {
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #047857
+        );
+}
+
+
+/* ID COLOR 4 */
+
+.id-badge-3 {
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #d97706
+        );
+}
+
+
+/* ID COLOR 5 */
+
+.id-badge-4 {
+    background:
+        linear-gradient(
+            135deg,
+            #ec4899,
+            #be185d
+        );
+}
+
+
+/* ID COLOR 6 */
+
+.id-badge-5 {
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6d28d9
+        );
+}
+
+
+/* =========================================================
+   DEPARTMENT BADGES
+========================================================= */
+
+.department-badge {
+    min-width: 95px;
+
+    text-transform: uppercase;
+}
+
+.department-badge:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.28);
+
+    filter: brightness(1.1);
+}
+
+
+/* =========================
+   FINANCE
+========================= */
+
+.department-finance {
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #047857
+        );
+
+    box-shadow:
+        0 5px 15px rgba(16, 185, 129, 0.25);
+}
+
+
+/* =========================
+   HR
+========================= */
+
+.department-hr {
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #d97706
+        );
+
+    box-shadow:
+        0 5px 15px rgba(245, 158, 11, 0.25);
+}
+
+
+/* =========================
+   MARKETING
+========================= */
+
+.department-marketing {
+    background:
+        linear-gradient(
+            135deg,
+            #ec4899,
+            #be185d
+        );
+
+    box-shadow:
+        0 5px 15px rgba(236, 72, 153, 0.25);
+}
+
+
+/* =========================
+   IT
+========================= */
+
+.department-it {
+    background:
+        linear-gradient(
+            135deg,
+            #06b6d4,
+            #0369a1
+        );
+
+    box-shadow:
+        0 5px 15px rgba(6, 182, 212, 0.25);
+}
+
+
+/* =========================
+   OTHER DEPARTMENTS
+========================= */
+
+.department-default {
+    background:
+        linear-gradient(
+            135deg,
+            #64748b,
+            #334155
+        );
+
+    box-shadow:
+        0 5px 15px rgba(100, 116, 139, 0.25);
+}
+
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .id-badge,
+    .department-badge {
+        transition: none;
+    }
+
+}
+
